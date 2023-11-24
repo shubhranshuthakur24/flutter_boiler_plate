@@ -1,4 +1,4 @@
-import 'package:chat_app/app/modules/user_account_modules/referral_code/services/referral_code_services.dart';
+import 'package:flutter_boiler_plate/app/modules/user_account_modules/referral_code/services/referral_code_services.dart';
 import 'package:get/get.dart';
 
 import '../../../../styles/constants.dart';

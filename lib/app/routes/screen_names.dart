@@ -1,5 +1,5 @@
-import 'package:chat_app/app/modules/user_account_modules/sign_in/views/signin_screen.dart';
-import 'package:chat_app/app/modules/user_account_modules/signup/views/signup_screen.dart';
+import 'package:flutter_boiler_plate/app/modules/user_account_modules/sign_in/views/signin_screen.dart';
+import 'package:flutter_boiler_plate/app/modules/user_account_modules/signup/views/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../components/Test/testing.dart';

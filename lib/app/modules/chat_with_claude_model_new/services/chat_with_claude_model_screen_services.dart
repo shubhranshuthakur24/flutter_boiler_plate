@@ -1,4 +1,4 @@
-import 'package:chat_app/app/helpers/api_related_services/apis_endpoint.dart';
+import 'package:flutter_boiler_plate/app/helpers/api_related_services/apis_endpoint.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -1,4 +1,4 @@
-import 'package:chat_app/app/styles/constants.dart';
+import 'package:flutter_boiler_plate/app/styles/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

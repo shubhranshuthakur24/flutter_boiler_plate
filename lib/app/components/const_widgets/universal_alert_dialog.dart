@@ -1,6 +1,6 @@
-import 'package:chat_app/app/components/const_widgets/primary_button_style.dart';
-import 'package:chat_app/app/components/const_widgets/secondary_button_style.dart';
-import 'package:chat_app/app/styles/font_styles.dart';
+import 'package:flutter_boiler_plate/app/components/const_widgets/primary_button_style.dart';
+import 'package:flutter_boiler_plate/app/components/const_widgets/secondary_button_style.dart';
+import 'package:flutter_boiler_plate/app/styles/font_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

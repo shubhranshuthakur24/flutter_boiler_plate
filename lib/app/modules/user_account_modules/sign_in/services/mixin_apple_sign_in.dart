@@ -1,7 +1,7 @@
 // import 'dart:convert';
 // import 'dart:math';
 //
-// import 'package:chat_app/app/modules/user_account_modules/sign_in/services/sign_in_screen_services.dart';
+// import 'package:flutter_boiler_plate/app/modules/user_account_modules/sign_in/services/sign_in_screen_services.dart';
 // import 'package:crypto/crypto.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:get/get.dart';

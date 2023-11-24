@@ -1,4 +1,4 @@
-import 'package:chat_app/app/styles/colors.dart';
+import 'package:flutter_boiler_plate/app/styles/colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 

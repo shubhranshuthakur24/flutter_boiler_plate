@@ -1,11 +1,11 @@
-import 'package:chat_app/app/modules/chat_search_with_csv_claude_model/services/chat_search_with_csv_claude_model_screen_services.dart';
-import 'package:chat_app/app/modules/chat_with_claude_model/views/chat_with_claude_model_screen.dart';
-import 'package:chat_app/app/modules/testScreen/views/test_screen.dart';
-import 'package:chat_app/app/modules/user_account_modules/sign_in/services/sign_in_screen_services.dart';
-import 'package:chat_app/app/modules/user_account_modules/sign_in/views/signin_screen.dart';
-import 'package:chat_app/app/modules/user_account_modules/signup/services/signup_screen_services.dart';
-import 'package:chat_app/app/modules/user_account_modules/user_profille/services/user_profile_services.dart';
-import 'package:chat_app/app/routes/screen_names.dart';
+import 'package:flutter_boiler_plate/app/modules/chat_search_with_csv_claude_model/services/chat_search_with_csv_claude_model_screen_services.dart';
+import 'package:flutter_boiler_plate/app/modules/chat_with_claude_model/views/chat_with_claude_model_screen.dart';
+import 'package:flutter_boiler_plate/app/modules/testScreen/views/test_screen.dart';
+import 'package:flutter_boiler_plate/app/modules/user_account_modules/sign_in/services/sign_in_screen_services.dart';
+import 'package:flutter_boiler_plate/app/modules/user_account_modules/sign_in/views/signin_screen.dart';
+import 'package:flutter_boiler_plate/app/modules/user_account_modules/signup/services/signup_screen_services.dart';
+import 'package:flutter_boiler_plate/app/modules/user_account_modules/user_profille/services/user_profile_services.dart';
+import 'package:flutter_boiler_plate/app/routes/screen_names.dart';
 import 'package:get/get.dart';
 
 

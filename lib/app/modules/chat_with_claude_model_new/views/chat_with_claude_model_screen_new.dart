@@ -1,8 +1,8 @@
-import 'package:chat_app/app/styles/font_styles.dart';
+import 'package:flutter_boiler_plate/app/styles/font_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:chat_app/app/styles/colors.dart';
+import 'package:flutter_boiler_plate/app/styles/colors.dart';
 
 import '../../../components/chat_input_feild/patient_and_doctor_query_input_feild.dart';
 import '../../../components/chat_response_widget/chat_response_widget.dart';

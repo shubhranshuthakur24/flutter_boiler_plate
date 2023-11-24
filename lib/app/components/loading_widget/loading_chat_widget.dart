@@ -1,5 +1,5 @@
 
-import 'package:chat_app/app/styles/colors.dart';
+import 'package:flutter_boiler_plate/app/styles/colors.dart';
 import 'package:flutter/cupertino.dart';
 
 class CircularContainer extends StatelessWidget {

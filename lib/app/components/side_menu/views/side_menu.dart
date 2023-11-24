@@ -1,6 +1,6 @@
-import 'package:chat_app/app/components/side_menu/views/widgets/on_hover_container_widget.dart';
-import 'package:chat_app/app/components/side_menu/views/widgets/on_hover_widget.dart';
-import 'package:chat_app/app/components/side_menu/views/widgets/side_bar_menu_icon_name_widget.dart';
+import 'package:flutter_boiler_plate/app/components/side_menu/views/widgets/on_hover_container_widget.dart';
+import 'package:flutter_boiler_plate/app/components/side_menu/views/widgets/on_hover_widget.dart';
+import 'package:flutter_boiler_plate/app/components/side_menu/views/widgets/side_bar_menu_icon_name_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

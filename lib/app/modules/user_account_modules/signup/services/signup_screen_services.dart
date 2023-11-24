@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:chat_app/app/modules/user_account_modules/signup/services/signup_with_google_services_mixin.dart';
+import 'package:flutter_boiler_plate/app/modules/user_account_modules/signup/services/signup_with_google_services_mixin.dart';
 import 'package:crypto/crypto.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

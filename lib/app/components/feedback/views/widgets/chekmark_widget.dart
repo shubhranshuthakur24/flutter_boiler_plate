@@ -1,5 +1,5 @@
-import 'package:chat_app/app/styles/colors.dart';
-import 'package:chat_app/app/utils/device_related/device_identify.dart';
+import 'package:flutter_boiler_plate/app/styles/colors.dart';
+import 'package:flutter_boiler_plate/app/utils/device_related/device_identify.dart';
 import 'package:flutter/material.dart';
 
 class CheckmarkCircleWidget extends StatefulWidget {

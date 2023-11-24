@@ -1,4 +1,4 @@
-import 'package:chat_app/app/modules/user_account_modules/signup/services/signup_screen_services.dart';
+import 'package:flutter_boiler_plate/app/modules/user_account_modules/signup/services/signup_screen_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -1,4 +1,4 @@
-import 'package:chat_app/app/modules/user_account_modules/forgot_password_module/create_new_password/services/reset_password_screen_services.dart';
+import 'package:flutter_boiler_plate/app/modules/user_account_modules/forgot_password_module/create_new_password/services/reset_password_screen_services.dart';
 import 'package:get/get.dart';
 
 class NewPasswordScreenButtonColorChageWhenAllRequiredFeildAreFilled extends GetxController {

@@ -1,5 +1,5 @@
-import 'package:chat_app/app/utils/internationalization_using_getx/preferred_language_mapping.dart';
-import 'package:chat_app/app/utils/internationalization_using_getx/tr_keys.dart';
+import 'package:flutter_boiler_plate/app/utils/internationalization_using_getx/preferred_language_mapping.dart';
+import 'package:flutter_boiler_plate/app/utils/internationalization_using_getx/tr_keys.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
