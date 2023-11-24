@@ -6,8 +6,8 @@ import 'package:flutter_boiler_plate/app/modules/user_account_modules/user_profi
 import 'package:flutter_boiler_plate/app/routes/screen_names.dart';
 import 'package:get/get.dart';
 
-import '../modules/chat_with_claude_model/services/chat_with_claude_model_screen_services.dart';
 
+import '../modules/home_screen/services/home_screen_services.dart';
 import '../modules/user_account_modules/cg_profile_modules/profile_update/services/profile_update_services.dart';
 import 'middlewares/middleware_for_sign_in_screens.dart';
 import 'middlewares/middleware_for_sign_out_screens.dart';

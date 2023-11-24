@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
-import '../../../../modules/chat_with_claude_model/services/chat_with_claude_model_screen_services.dart';
 import '../../../../styles/colors.dart';
 import '../../../../styles/font_styles.dart';
 

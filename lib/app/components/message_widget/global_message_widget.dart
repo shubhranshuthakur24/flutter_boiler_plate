@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../modules/home_screen/services/home_screen_services.dart';
 import '../feedback/models/feedback_response_model.dart';
 import '../../styles/colors.dart';
 import '../../styles/constantImageWidget.dart';
 import '../../styles/font_styles.dart';
 import '../../utils/device_related/device_identify.dart';
-import '../../modules/chat_with_claude_model/models/chat_with_claude_message_model.dart';
-import '../../modules/chat_with_claude_model/services/chat_with_claude_model_screen_services.dart';
-
 
 
 class MessageWidget extends GetView<HomeScreenServices> {

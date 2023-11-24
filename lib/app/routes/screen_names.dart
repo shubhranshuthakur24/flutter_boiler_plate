@@ -2,10 +2,9 @@ import 'package:flutter_boiler_plate/app/modules/user_account_modules/sign_in/vi
 import 'package:flutter_boiler_plate/app/modules/user_account_modules/signup/views/signup_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../components/Test/testing.dart';
 
-import '../modules/chat_with_claude_model/views/chat_with_claude_model_screen.dart';
 
+import '../modules/home_screen/views/home_screen.dart';
 import '../modules/user_account_modules/cg_profile_modules/profile_update/views/profile_update_screen.dart';
 import '../modules/user_account_modules/user_profille/view/user_profile_screen.dart';
 

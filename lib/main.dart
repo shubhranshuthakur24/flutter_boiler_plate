@@ -88,7 +88,10 @@ class ChatApp extends StatelessWidget {
       // locale: Locale(selectedPreferredLanguageMapping.languageCode, selectedPreferredLanguageMapping.countryCode),
       // locale: const Locale('es', 'ES'),
       fallbackLocale: const Locale('en', 'US'),
+
       theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
         primaryColor: kColorBlueDark,
         fontFamily: constantOpenSans,
       ),

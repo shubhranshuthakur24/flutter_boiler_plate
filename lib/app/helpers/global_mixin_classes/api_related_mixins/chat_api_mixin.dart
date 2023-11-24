@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../modules/chat_with_claude_model/models/chat_with_claude_message_model.dart';
 import '../../../styles/constants.dart';
 import '../../api_related_services/api_get_post_services.dart';
 import '../../api_related_services/apis_endpoint.dart';
+import '../../global_models/chat_message_model.dart';
 
 enum EnumMessageStatus {
   sent,

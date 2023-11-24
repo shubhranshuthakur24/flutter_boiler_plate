@@ -1,4 +1,3 @@
-
 class ChatWithClaudeMessageModel {
   late final String message;
   late final String messageType;
@@ -9,4 +8,3 @@ class ChatWithClaudeMessageModel {
         required this.messageType,
       });
 }
-
