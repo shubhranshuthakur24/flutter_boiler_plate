@@ -11,7 +11,7 @@ import '../../modules/chat_with_claude_model/services/chat_with_claude_model_scr
 
 
 
-class MessageWidget extends GetView<ChatWithClaudeModelScreenServices> {
+class MessageWidget extends GetView<HomeScreenServices> {
 
   const MessageWidget({super.key, required this.message, required this.messageType});
   final String message;

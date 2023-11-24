@@ -8,7 +8,7 @@ import '../../../helpers/global_mixin_classes/device_related_mixins/ip_address_m
 
 
 
-class ChatWithClaudeModelScreenServices extends GetxController with ChatApiMixin, MixinFeedbackResponse, IpAddressMixin {
+class HomeScreenServices extends GetxController with ChatApiMixin, MixinFeedbackResponse, IpAddressMixin {
   final simpleChatTextController = TextEditingController();
   final RxBool isSimpleChatApiLoading = false.obs;
   final RxBool showFeedbackResponseForm = false.obs;

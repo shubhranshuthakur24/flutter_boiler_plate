@@ -11,7 +11,7 @@ import '../modules/user_account_modules/user_profille/view/user_profile_screen.d
 
 
 enum ScreenNames {
-  chat(screenName:"Chat",screenWidget: ChatWithClaudeModelScreen()),
+  home(screenName:"home",screenWidget: HomeScreen()),
 
   profile(screenName:"profile",screenWidget: ProfileScreen()),
   editProfile(screenName:"editProfile",screenWidget: ProfileUpdateScreen()),

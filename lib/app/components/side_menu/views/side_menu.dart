@@ -4,6 +4,7 @@ import 'package:flutter_boiler_plate/app/components/side_menu/views/widgets/side
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../helpers/token_services/token_services.dart';
 import '../../../routes/screen_names.dart';
 import '../../../styles/colors.dart';
 import '../../../styles/k_icons.dart';
@@ -41,7 +42,7 @@ class SideMenu extends StatelessWidget {
                     // margin: const EdgeInsets.symmetric(horizontal: 27),
                     child: customInkWell(
                       onTap: () {
-                        Get.offAllNamed(ScreenNames.chat.routeName);
+                        Get.offAllNamed(ScreenNames.home.routeName);
                       },
                       child: const ChangeThisWidgetWithImage(containerHeight: 50, containerWidth: 250,),
 
@@ -61,15 +62,15 @@ class SideMenu extends StatelessWidget {
                       color: color,
                       onHoverChildWidget: customInkWell(
                         onTap: () {
-                          sideBarMenuServices.selectedScreenNameEnums.value = ScreenNames.chat;
+                          sideBarMenuServices.selectedScreenNameEnums.value = ScreenNames.home;
                           Get.offAllNamed(
-                            ScreenNames.chat.routeName,
+                            ScreenNames.home.routeName,
                           );
                         },
                         child: SideBarMenuIconNameWidget(
-                          selectedSideBar: const [ScreenNames.chat],
+                          selectedSideBar: const [ScreenNames.home],
 
-                          menuName: "Chat | Claude",
+                          menuName: "Home",
                           isHovered: isHovered, isIconAvailable: false,
                           // isSelectd: true,
                         ),
@@ -100,7 +101,30 @@ class SideMenu extends StatelessWidget {
                     );
                   }),
                  const SizedBox(height: 100,),
-
+                  buildSizedBox(),
+                  OnHover(builder: (isHovered) {
+                    final color = isHovered ? hoverColor : Colors.transparent;
+                    return OnHoverContainer(
+                      color: color,
+                      onHoverChildWidget: customInkWell(
+                        onTap: () async {
+                          await Get.find<TokenServices>().firebaseAuthSignOut();
+                          Get.offAllNamed(
+                            ScreenNames.signIn.routeName,
+                          );
+                        },
+                        child: SideBarMenuIconNameWidget(
+                          isIconAvailable: false,
+                          isHovered: isHovered,
+                          selectedSideBar: const [
+                            ScreenNames.signIn,
+                          ],
+                          menuName: "Sign Out",
+                        ),
+                      ), isHovered: isHovered,
+                    );
+                  }),
+                  const SizedBox(height: 100,),
 
                 ],
               ),

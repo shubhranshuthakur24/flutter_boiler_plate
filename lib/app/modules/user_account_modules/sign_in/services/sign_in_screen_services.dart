@@ -63,7 +63,7 @@ class SignInScreenServices extends GetxController with FirebaseAuthSignInWithEma
     // await Get.find<TokenServices>();
     // String res = "";
     Get.delete<SignInScreenServices>();
-    Get.offAllNamed(ScreenNames.chat.routeName);
+    Get.offAllNamed(ScreenNames.home.routeName);
     // loginApiHit();
     return;
   }

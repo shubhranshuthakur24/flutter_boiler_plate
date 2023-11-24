@@ -18,7 +18,7 @@ class MiddlewareForSignOutScreens extends GetMiddleware {
       // Switch case to handle different screen names
       switch (screenName) {
         case 'chat':
-          return RouteSettings(name: ScreenNames.chat.routeName);
+          return RouteSettings(name: ScreenNames.home.routeName);
         case 'profile':
           return RouteSettings(name: ScreenNames.profile.routeName);
         case 'signIn':
@@ -34,7 +34,7 @@ class MiddlewareForSignOutScreens extends GetMiddleware {
 
     // If user is authenticated, redirect to the chat route
     if (FirebaseAuth.instance.currentUser != null) {
-      return RouteSettings(name: ScreenNames.chat.routeName);
+      return RouteSettings(name: ScreenNames.home.routeName);
     }
 
     // If not authenticated, allow normal navigation

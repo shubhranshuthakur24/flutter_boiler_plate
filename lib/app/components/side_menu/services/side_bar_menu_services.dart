@@ -4,5 +4,5 @@ import '../../../modules/user_account_modules/signup/services/firebase_auth_sign
 import '../../../routes/screen_names.dart';
 
 class SideBarMenuServices extends GetxController  {
-  final Rx<ScreenNames> selectedScreenNameEnums = ScreenNames.chat.obs;
+  final Rx<ScreenNames> selectedScreenNameEnums = ScreenNames.home.obs;
 }

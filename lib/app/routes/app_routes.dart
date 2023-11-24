@@ -42,12 +42,12 @@ abstract class AppRoutes {
     ),
     _setToNamedRoute(
       transition: Transition.noTransition,
-      screenNameEnums: ScreenNames.chat,
+      screenNameEnums: ScreenNames.home,
       middlewareList: [MiddlewareForSignInScreenScreens()],
       bindings: [
         BindingsBuilder(() {
-          Get.delete<ChatWithClaudeModelScreenServices>(force: true);
-          Get.put(ChatWithClaudeModelScreenServices());
+          Get.delete<HomeScreenServices>(force: true);
+          Get.put(HomeScreenServices());
         }),
       ],
     ),
