@@ -34,9 +34,9 @@ class SideMenu extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // const SizedBox(
-                  //   height: 62,
-                  // ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Container(
                     // margin: const EdgeInsets.symmetric(horizontal: 27),
                     child: customInkWell(
