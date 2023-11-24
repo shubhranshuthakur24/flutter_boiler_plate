@@ -1,6 +1,4 @@
-import 'package:flutter_boiler_plate/app/modules/chat_search_with_csv_claude_model/services/chat_search_with_csv_claude_model_screen_services.dart';
-import 'package:flutter_boiler_plate/app/modules/chat_with_claude_model/views/chat_with_claude_model_screen.dart';
-import 'package:flutter_boiler_plate/app/modules/testScreen/views/test_screen.dart';
+
 import 'package:flutter_boiler_plate/app/modules/user_account_modules/sign_in/services/sign_in_screen_services.dart';
 import 'package:flutter_boiler_plate/app/modules/user_account_modules/sign_in/views/signin_screen.dart';
 import 'package:flutter_boiler_plate/app/modules/user_account_modules/signup/services/signup_screen_services.dart';
@@ -8,13 +6,8 @@ import 'package:flutter_boiler_plate/app/modules/user_account_modules/user_profi
 import 'package:flutter_boiler_plate/app/routes/screen_names.dart';
 import 'package:get/get.dart';
 
-
-import '../modules/chat_search_with_csv_open_ai_model/services/chat_search_with_csv_open_ai_model_screen_services.dart';
-import '../modules/chat_search_with_pdf_claude_model/services/chat_search_with_pdf_claude_model_screen_services.dart';
-import '../modules/chat_search_with_pdf_openai_model/services/chat_search_with_pdf_openai_model_screen_services.dart';
 import '../modules/chat_with_claude_model/services/chat_with_claude_model_screen_services.dart';
-import '../modules/chat_with_claude_model_new/services/chat_with_claude_model_screen_services.dart';
-import '../modules/testScreen/services/test_screen_services.dart';
+
 import '../modules/user_account_modules/cg_profile_modules/profile_update/services/profile_update_services.dart';
 import 'middlewares/middleware_for_sign_in_screens.dart';
 import 'middlewares/middleware_for_sign_out_screens.dart';
@@ -58,50 +51,10 @@ abstract class AppRoutes {
         }),
       ],
     ),
-    _setToNamedRoute(
-      transition: Transition.noTransition,
-      screenNameEnums: ScreenNames.chatClaudePDF,
-      middlewareList: [MiddlewareForSignInScreenScreens()],
-      bindings: [
-        BindingsBuilder(() {
-          Get.delete<ChatSearchWithCsvOpenAIModelScreenServices>(force: true);
-          Get.put(ChatSearchWithPdfClaudeModelScreenServices());
-        }),
-      ],
-    ),
-    _setToNamedRoute(
-      transition: Transition.noTransition,
-      screenNameEnums: ScreenNames.chatOpenAICSV,
-      middlewareList: [MiddlewareForSignInScreenScreens()],
-      bindings: [
-        BindingsBuilder(() {
-          Get.delete<ChatSearchWithCsvOpenAIModelScreenServices>(force: true);
-          Get.put(ChatSearchWithCsvOpenAIModelScreenServices());
-        }),
-      ],
-    ),
-    _setToNamedRoute(
-      transition: Transition.noTransition,
-      screenNameEnums: ScreenNames.chatOpenAIPDF,
-      middlewareList: [MiddlewareForSignInScreenScreens()],
-      bindings: [
-        BindingsBuilder(() {
-          Get.delete<ChatSearchWithCsvOpenAIModelScreenServices>(force: true);
-          Get.put(ChatSearchWithPdfOpenAIModelScreenServices());
-        }),
-      ],
-    ),
-    _setToNamedRoute(
-      transition: Transition.noTransition,
-      screenNameEnums: ScreenNames.chatClaudeCSV,
-      middlewareList: [MiddlewareForSignInScreenScreens()],
-      bindings: [
-        BindingsBuilder(() {
-          Get.delete<ChatSearchWithCsvClaudeModelScreenServices>(force: true);
-          Get.put(ChatSearchWithCsvClaudeModelScreenServices());
-        }),
-      ],
-    ),
+
+
+
+
     _setToNamedRoute(
       transition: Transition.noTransition,
       screenNameEnums: ScreenNames.signIn,
@@ -124,26 +77,6 @@ abstract class AppRoutes {
         }),
       ],
     ),
-
-    _setToNamedRoute(
-      transition: Transition.noTransition,
-      screenNameEnums: ScreenNames.testScreen,
-      middlewareList: [MiddlewareForSignInScreenScreens()],
-      bindings: [
-        BindingsBuilder(() {
-          Get.delete<TestScreenServices>(force: true);
-          Get.put(TestScreenServices());
-        }),]),
-
-    _setToNamedRoute(
-        transition: Transition.noTransition,
-        screenNameEnums: ScreenNames.chatWithClaudeNew,
-        middlewareList: [MiddlewareForSignInScreenScreens()],
-        bindings: [
-          BindingsBuilder(() {
-            Get.delete<ChatWithClaudeModelScreenServicesNew>(force: true);
-            Get.put(ChatWithClaudeModelScreenServicesNew());
-          }),]),
     _setToNamedRoute(
         transition: Transition.noTransition,
         screenNameEnums: ScreenNames.profile,
@@ -162,15 +95,7 @@ abstract class AppRoutes {
             Get.delete<ProfileUpdateServices>(force: true);
             Get.put(ProfileUpdateServices());
           }),]),
-    _setToNamedRoute(
-        transition: Transition.noTransition,
-        screenNameEnums: ScreenNames.testExampleScreen,
-        middlewareList: [MiddlewareForSignInScreenScreens()],
-        bindings: [
-          BindingsBuilder(() {
-            // Get.delete<ProfileScreenServices>(force: true);
-            // Get.put(ProfileScreenServices());
-          }),]),
+
 
 
   ];

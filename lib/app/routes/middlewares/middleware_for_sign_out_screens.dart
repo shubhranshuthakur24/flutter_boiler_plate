@@ -19,33 +19,16 @@ class MiddlewareForSignOutScreens extends GetMiddleware {
       switch (screenName) {
         case 'chat':
           return RouteSettings(name: ScreenNames.chat.routeName);
-        case 'chatClaudePDF':
-          return RouteSettings(name: ScreenNames.chatClaudePDF.routeName);
-        case 'chatOpenAIPDF':
-          return RouteSettings(name: ScreenNames.chatOpenAIPDF.routeName);
-        case 'chatOpenAICSV':
-          return RouteSettings(name: ScreenNames.chatOpenAICSV.routeName);
-        case 'chatClaudeCSV':
-          return RouteSettings(name: ScreenNames.chatClaudeCSV.routeName);
-        case 'history':
-          return RouteSettings(name: ScreenNames.history.routeName);
-        case 'support':
-          return RouteSettings(name: ScreenNames.support.routeName);
-        case 'feedback':
-          return RouteSettings(name: ScreenNames.feedback.routeName);
         case 'profile':
           return RouteSettings(name: ScreenNames.profile.routeName);
-        case 'signOut':
-          return RouteSettings(name: ScreenNames.signOut.routeName);
         case 'signIn':
           return RouteSettings(name: ScreenNames.signIn.routeName);
         case 'signUp':
           return RouteSettings(name: ScreenNames.signUp.routeName);
-        case 'testScreen':
-          return RouteSettings(name: ScreenNames.testScreen.routeName);
+
         default:
         // Handle unknown screen names or redirect to a default route
-          return RouteSettings(name: '/');
+          return const RouteSettings(name: '/');
       }
     }
 
