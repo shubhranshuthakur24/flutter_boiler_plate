@@ -8,7 +8,6 @@ import '../../../helpers/token_services/token_services.dart';
 import '../../../routes/screen_names.dart';
 import '../../../styles/colors.dart';
 import '../../../styles/k_icons.dart';
-import '../../../utils/device_related/device_identify.dart';
 import '../../const_widgets/change_with_image_widget.dart';
 import '../services/side_bar_menu_services.dart';
 
