@@ -3,6 +3,7 @@ import 'dart:developer' as logDev;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_boiler_plate/app/components/const_widgets/change_with_image_widget.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -163,11 +164,12 @@ void showToast(String data,
           if (iconAsset != null)
             Container(
               margin: const EdgeInsets.only(right: 11),
-              child: Image.asset(
-                iconAsset,
-                width: 30,
-                height: 30,
-              ),
+              child:const ChangeThisWidgetWithImage(),
+              // Image.asset(
+              //   iconAsset,
+              //   width: 30,
+              //   height: 30,
+              // ),
             ),
           Expanded(
             child:
