@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import '../../styles/colors.dart';
 import '../../styles/font_styles.dart';
+import 'change_with_image_widget.dart';
 
 class ProfileTextFieldsWidget extends StatelessWidget {
   String type;
@@ -35,10 +36,10 @@ class ProfileTextFieldsWidget extends StatelessWidget {
             children: [
               assestImageName == null
                   ? const SizedBox.shrink()
-                  : SizedBox(
+                  : const SizedBox(
                 width: 20,
                 height: 20,
-                child: Image.asset("images/icons/${assestImageName!}"),
+                child: ChangeThisWidgetWithImage(),
               ),
               const SizedBox(
                 width: 4,

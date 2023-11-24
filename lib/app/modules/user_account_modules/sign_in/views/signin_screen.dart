@@ -3,6 +3,7 @@ import 'package:flutter_boiler_plate/app/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../components/const_widgets/change_with_image_widget.dart';
 import '../../../../components/const_widgets/universal_widgets.dart';
 import '../../../../components/side_menu/views/widgets/on_hover_widget.dart';
 import '../../../../components/side_menu/views/widgets/side_bar_panel.dart';
@@ -62,13 +63,14 @@ class SignInScreen extends GetView<SignInScreenServices> {
                           height: 32,
                         ),
 
-                        const Image(
-                          // height: 100,
-                          width: 200,
-                          isAntiAlias: true,
-                          alignment: Alignment.centerLeft,
-                          image: AssetImage("images/icons/stanford_logo.png"),
-                        ),
+                        const ChangeThisWidgetWithImage(containerHeight: 50, containerWidth: 250,),
+                        //const Image(
+                          //   // height: 100,
+                          //   width: 200,
+                          //   isAntiAlias: true,
+                          //   alignment: Alignment.centerLeft,
+                          //   image: AssetImage("images/icons/stanford_logo.png"),
+                          // ),
                         const SizedBox(height: 25),
                          Align(
                            alignment: Alignment.centerLeft,

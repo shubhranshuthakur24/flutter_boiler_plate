@@ -8,6 +8,7 @@ import '../../../routes/screen_names.dart';
 import '../../../styles/colors.dart';
 import '../../../styles/k_icons.dart';
 import '../../../utils/device_related/device_identify.dart';
+import '../../const_widgets/change_with_image_widget.dart';
 import '../services/side_bar_menu_services.dart';
 
 
@@ -42,11 +43,13 @@ class SideMenu extends StatelessWidget {
                       onTap: () {
                         Get.offAllNamed(ScreenNames.chat.routeName);
                       },
-                      child: Image(
-                          alignment: Alignment.centerLeft,
-                          height: kDevicesIsMobile(context) ? 114 : 100,
-                          width: kDevicesIsMobile(context) ? 211 : 200,
-                          image: const AssetImage("images/icons/stanford_logo.png")),
+                      child: const ChangeThisWidgetWithImage(containerHeight: 50, containerWidth: 250,),
+
+                      // Image(
+                      //     alignment: Alignment.centerLeft,
+                      //     height: kDevicesIsMobile(context) ? 114 : 100,
+                      //     width: kDevicesIsMobile(context) ? 211 : 200,
+                      //     image: const AssetImage("images/icons/stanford_logo.png")),
                     ),
                   ),
                   const SizedBox(

@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 
 import 'package:image_picker/image_picker.dart';
 
+import '../../../../../components/const_widgets/change_with_image_widget.dart';
 import '../../../../../components/const_widgets/profile_text_field_widget.dart';
 import '../../../../../components/side_menu/views/widgets/side_bar_panel.dart';
 import '../../../../../helpers/global_function/string_manipulation.dart';
@@ -63,11 +64,12 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                               },
                               child: Row(
                                 children: [
-                                  Image.asset(
-                                    "images/icons/backBlack.png",
-                                    width: 15,
-                                    height: 18,
-                                  ),
+                                  const ChangeThisWidgetWithImage(),
+                                  // Image.asset(
+                                  //   "images/icons/backBlack.png",
+                                  //   width: 15,
+                                  //   height: 18,
+                                  // ),
                                   const SizedBox(
                                     width: 14,
                                   ),
@@ -190,11 +192,13 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                                         isImageLoading = false;
                                       });
                                     },
-                                    child: Image.asset(
-                                      "images/icons/editImageBlack.png",
-                                      height: 20,
-                                      width: 20,
-                                    )))
+                                    child: const ChangeThisWidgetWithImage(),
+                                    // Image.asset(
+                                    //   "images/icons/editImageBlack.png",
+                                    //   height: 20,
+                                    //   width: 20,
+                                    // )
+                                ))
                           ],
                         ),
                       ),

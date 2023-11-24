@@ -1,10 +1,10 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
+// import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 
 import '../../styles/constants.dart';
-import '../../styles/font_size_related_function.dart';
+// import '../../styles/font_size_related_function.dart';
 
 class TokenServices extends GetxController {
   String? idToken;
@@ -25,7 +25,7 @@ class TokenServices extends GetxController {
       showPrint(idToken.toString());
       showPrint("////////////////////////////");
     });
-    FlutterNativeSplash.remove();
+    // FlutterNativeSplash.remove();
   }
   Future<void>initializeIdToken()async {
     if(Get.find<TokenServices>().idToken == null){

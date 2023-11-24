@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../components/const_widgets/change_with_image_widget.dart';
 import '../../../../components/side_menu/views/widgets/side_bar_panel.dart';
 import '../../../../routes/screen_names.dart';
 import '../../../../styles/colors.dart';
@@ -164,11 +165,12 @@ class kAppBarWidgetWithBackButton extends StatelessWidget {
                             padding: context.isPhone
                                 ? const EdgeInsets.only(top: 4, right: 8, left: 8)
                                 : const EdgeInsets.only(top: 7, right: 8, left: 8),
-                            child: Image.asset(
-                              "images/icons/backBlack.png",
-                              // width: context.isPhone ? 16 : 30,
-                              height: context.isPhone ? 20 : 30,
-                            ),
+                            child: const ChangeThisWidgetWithImage(containerHeight: 20, containerWidth: 50,),
+                            // Image.asset(
+                            //   "images/icons/backBlack.png",
+                            //   // width: context.isPhone ? 16 : 30,
+                            //   height: context.isPhone ? 20 : 30,
+                            // ),
                           )),
                     ),
                     // const Spacer(),
@@ -312,11 +314,12 @@ class TopWidget extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 38, vertical: 11),
                     child: Row(
                       children: [
-                        Image.asset(
-                          "images/icons/editBlack.png",
-                          width: 16,
-                          height: 14,
-                        ),
+                         const ChangeThisWidgetWithImage(),
+                        // Image.asset(
+                        //   "images/icons/editBlack.png",
+                        //   width: 16,
+                        //   height: 14,
+                        // ),
                         const SizedBox(
                           width: 5,
                         ),
@@ -346,11 +349,12 @@ class HeadingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Image.asset(
-          "images/icons/$icon",
-          width: 18,
-          height: 18,
-        ),
+        const ChangeThisWidgetWithImage(),
+        // Image.asset(
+        //   "images/icons/$icon",
+        //   width: 18,
+        //   height: 18,
+        // ),
         const SizedBox(
           width: 3,
         ),
