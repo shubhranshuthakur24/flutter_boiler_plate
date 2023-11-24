@@ -1,4 +1,4 @@
-![image](https://github.com/shubhranshuthakur24/flutter_boiler_plate/assets/52141294/1bedb3f8-f3aa-4f43-9925-d154980a8964)![image](https://github.com/shubhranshuthakur24/flutter_boiler_plate/assets/52141294/2508e2ea-4ff0-462c-b550-cc4123cc15fb)# flutter_boiler_plate
+flutter_boiler_plate
 It consists basic screen ui that includes (signIn, signUp, Home, Profile)
 
 
@@ -15,6 +15,13 @@ Step 5 -- ✔ Select a Firebase project to configure your Flutter application wi
   macos
 ✔ web  
 Step 5 -- Enable authentication in firebase.
+![image](https://github.com/shubhranshuthakur24/flutter_boiler_plate/assets/52141294/114f708e-7e7f-435c-952d-f674cf0b9e28)
+Step 6 -- ![image](https://github.com/shubhranshuthakur24/flutter_boiler_plate/assets/52141294/68656789-d6d6-4611-b581-c65f62412554)
+Step 7 -- <img width="1426" alt="image" src="https://github.com/shubhranshuthakur24/flutter_boiler_plate/assets/52141294/edadf9ea-cb39-4492-817c-ab283e6e485c">
+<img width="1426" alt="image" src="https://github.com/shubhranshuthakur24/flutter_boiler_plate/assets/52141294/06a80ab7-48a9-46a0-8ce5-6f3bcd5efd6a">
+
+
+
 Step (Optional) -- 
     Use the flutter create command to create a new project:
       In the terminal execute:
