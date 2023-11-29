@@ -24,7 +24,6 @@ class ProfileScreen extends StatelessWidget {
                 const kAppBarWidgetWithBackButton(
                   title: "Profile",
                 ),
-
                 Expanded(
                   child: SingleChildScrollView(
                     child: Container(

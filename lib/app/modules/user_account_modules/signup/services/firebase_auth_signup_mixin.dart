@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../routes/screen_names.dart';
 import '../../../../styles/constants.dart';
 import '../../../../utils/internationalization_using_getx/tr_keys.dart';
 
@@ -20,6 +21,7 @@ mixin FirebaseAuthSignUpWithEmailAndPasswordMixin {
         signupScreenServices.buttonPressed.value = true;
         showPrint(result.toString());
         showPrint("line 24");
+        Get.toNamed(ScreenNames.home.routeName);
       } else {
         // Handle the case when result.user is null
         throw Exception("User registration failed.");

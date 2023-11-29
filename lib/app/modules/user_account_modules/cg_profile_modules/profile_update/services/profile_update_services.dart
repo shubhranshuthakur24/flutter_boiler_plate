@@ -140,7 +140,7 @@ class ProfileUpdateServices extends GetxController {
     // if (cgContactDetailsEditingController.text.trim() == "") showPrint("hello");
 
     // List<String> splitNameList = StringManipulation.nameSplit(fullname: cgFullNameEditingController.text.trim());
-    Map<String, dynamic>? decoded = await ApiGetPostMethodUniversal.postMethod(apiUrl: ApiEndpoints.userDetailsApiUrl, body: {
+    Map<String, dynamic>? decoded = await ApiGetPostMethodUniversal.postMethod(apiUrl: ApiEndpoints.updateUserProfile, body: {
       "profile_picurl": "Get.find<TokenServices>().userProfileUrlUniversal.value.trim()",
       "firstname": "splitNameList[0].trim().toLowerCase()",
       "lastname": "splitNameList[1].trim().toLowerCase()",
