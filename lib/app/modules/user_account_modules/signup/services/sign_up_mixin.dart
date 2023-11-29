@@ -5,6 +5,7 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../helpers/api_related_services/api_get_post_services.dart';
 import '../../../../helpers/api_related_services/apis_endpoint.dart';
+import '../../../../helpers/token_services/token_services.dart';
 import '../../../../routes/screen_names.dart';
 import '../../../../styles/constants.dart';
 
@@ -88,8 +89,8 @@ mixin SignUpApiMixin {
     try {
       Map<String, dynamic>? decoded = await ApiGetPostMethodUniversal.postMethod(apiUrl: ApiEndpoints.signUpApiUrl, body: {
         "email": email,
-        "first_name": name,
-        "last_name": name,
+        "first_name": "test",
+        "last_name": "account",
         if (firebaseToken != null) "firebase_id": firebaseToken,
       });
       showPrint(decoded.toString());
@@ -97,10 +98,9 @@ mixin SignUpApiMixin {
 
       if (decoded == null) return res;
 
-      if (decoded["response"] == "User created successfully") {
+      if (decoded["status"] == "success") {
         Get.toNamed(ScreenNames.home.routeName);
-
-        showPrint(decoded["response"].toString());
+        // showPrint(decoded["response"].toString());
         // Get.find<TokenServices>().caregiverFirstName = firstNameController.text.trim();
         // Get.find<TokenServices>().upIdTypeIDModel.value =
         //     UpIdTypeModel(upIdTypeID: decoded["upid_type"], showCareRecipientAssessmentScreens: decoded["loved_one_active"]);
