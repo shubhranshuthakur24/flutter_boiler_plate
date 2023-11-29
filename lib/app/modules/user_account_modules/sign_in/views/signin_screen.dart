@@ -13,9 +13,9 @@ import '../../../../routes/screen_names.dart';
 import '../../../../styles/constants.dart';
 import '../../../../styles/font_styles.dart';
 import '../../../../styles/k_icons.dart';
-import '../../../../utils/internationalization_using_getx/tr_keys.dart';
 import '../services/button_color_change_when_all_required_feild_are_filled.dart';
 import '../services/sign_in_screen_services.dart';
+
 
 class SignInScreen extends GetView<SignInScreenServices> {
   const SignInScreen({Key? key}) : super(key: key);

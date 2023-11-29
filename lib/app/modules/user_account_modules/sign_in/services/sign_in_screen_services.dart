@@ -39,6 +39,7 @@ class SignInScreenServices extends GetxController with FirebaseAuthSignInWithEma
       // Get.offAllNamed(ScreenNames.chat.name);
 
     }
+
   }
 
   String? returnValue() {

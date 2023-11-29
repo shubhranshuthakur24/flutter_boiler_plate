@@ -16,7 +16,7 @@ mixin MixinGetCgProfile {
     // LocalDbServices.readApiDataInLocalDb(
     //     screenNameEnums: ScreenNames.menu, functionReferenceForStoreLocalDbDataInToDartVariable: apiDataStoreInDartVariable);
     dynamic res;
-    Map<String, dynamic>? decoded = await ApiGetPostMethodUniversal.getMethod(apiUrl: ApiEndpoints.getProfileUrl);
+    Map<String, dynamic>? decoded = await ApiGetPostMethodUniversal.getMethod(apiUrl: ApiEndpoints.getUserProfile);
     showPrint(decoded.runtimeType.toString());
     if (decoded == null) return;
     hideLoading();
