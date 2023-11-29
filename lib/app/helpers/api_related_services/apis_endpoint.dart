@@ -11,7 +11,7 @@ abstract class ApiEndpoints{
   static const String otpCheckUrl = "auth/post_verify_reset_otp/";
   //
   static const String loginApiUrl = "auth/login_user/";
-  static const String signUpApiUrl = "auth/signup/";
+  static const String signUpApiUrl = "${baseUrl}auth/signup/";
   static const String updateUserProfile = "auth/post_verify_reset_otp/";
   static const String getUserProfile = "auth/get_user_profile/";
   static const String updateLogin = "https://3xiyi3pnn7.us-east-1.awsapprunner.com/v1/auth/update_login/";
