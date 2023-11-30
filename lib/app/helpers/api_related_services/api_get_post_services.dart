@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import '../../styles/constants.dart';
+import '../token_services/token_services.dart';
 
 abstract class ApiGetPostMethodUniversal {
   static Future<Map<String, dynamic>?> getMethod({required String apiUrl}) async {
@@ -39,7 +41,10 @@ abstract class ApiGetPostMethodUniversal {
   }) async {
     Map<String, dynamic>? apiData;
     try {
-      var headers = {
+      var headers = tokenRequired?{
+        'Content-Type': 'application/json',
+        'Authorization': "Token ${Get.find<TokenServices>().idToken}",
+      }:{
         'Content-Type': 'application/json',
       };
 

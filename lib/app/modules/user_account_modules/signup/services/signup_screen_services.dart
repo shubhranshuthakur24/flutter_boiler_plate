@@ -38,6 +38,8 @@ class SignupScreenServices extends GetxController with  SignUpApiMixin {
           password: signupScreenServices.passwordController.text.trim());
 
       if (result.user != null) {
+        final firebaseProfilePicUrl = FirebaseAuth.instance.currentUser!.photoURL.toString().trim();
+
         // User registration successful
         signupScreenServices.buttonPressed.value = true;
         showPrint(result.toString());
@@ -45,7 +47,7 @@ class SignupScreenServices extends GetxController with  SignUpApiMixin {
         apiSignUp(
           firebaseToken: FirebaseAuth.instance.currentUser!.uid,
           email: FirebaseAuth.instance.currentUser!.email,
-          firebaseProfilePicUrl: "",
+          firebaseProfilePicUrl: firebaseProfilePicUrl,
           name: FirebaseAuth.instance.currentUser!.displayName,
         );
       } else {
@@ -55,18 +57,18 @@ class SignupScreenServices extends GetxController with  SignUpApiMixin {
     } on FirebaseAuthException catch (e) {
       String er;
       if (e.code == 'weak-password') {
-        er = "thePasswordProvidedIsTooWeak";
-        showPrint("line 28");
+        er = "The Password Provided Is Too Weak";
+        showToast(center: true, er, showToastInReleaseMode: true);
       } else if (e.code == 'email-already-in-use') {
         er = 'The account already exists for that email. Please login instead';
-        showPrint("line 38");
+        showToast(center: true, er, showToastInReleaseMode: true);
       } else {
         er = e.message!; // Use the error message for other cases
+        showToast(center: true, er, showToastInReleaseMode: true);
         showPrint(e.code.toString());
-        showPrint("line 40");
       }
+      showToast("line 42 from signup services");
       signupScreenServices.buttonPressed.value = false;
-      showPrint("line 42");
     } catch (e, stackTrace) {
       String er = e.toString();
       showPrint(er);

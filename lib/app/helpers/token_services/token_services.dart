@@ -1,13 +1,15 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 
 import '../../styles/constants.dart';
-// import '../../styles/font_size_related_function.dart';
 
 class TokenServices extends GetxController {
   String? idToken;
+  late final String userid;
+  late final String firebaseUserId;
+  late String userFirstName;
+  late String userLastName;
 
   @override
   void onInit() {

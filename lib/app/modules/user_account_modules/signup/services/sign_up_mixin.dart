@@ -88,29 +88,40 @@ mixin SignUpApiMixin {
 
     try {
       Map<String, dynamic>? decoded = await ApiGetPostMethodUniversal.postMethod(apiUrl: ApiEndpoints.signUpApiUrl, body: {
-        "email": email,
-        "first_name": "test",
-        "last_name": "account",
+        "email": email ?? emailController.text.trim().toLowerCase(),
+        "first_name": firstNameController.text.trim(),
+        "last_name": lastNameController.text.trim(),
         if (firebaseToken != null) "firebase_id": firebaseToken,
       });
+
       showPrint(decoded.toString());
       buttonPressed.value = false;
 
-      if (decoded == null) return res;
+      if (decoded == null) {
+        // Handle the case when decoding is unsuccessful
+        return res;
+      }
 
       if (decoded["status"] == "success") {
-        Get.toNamed(ScreenNames.home.routeName);
-        // showPrint(decoded["response"].toString());
-        // Get.find<TokenServices>().caregiverFirstName = firstNameController.text.trim();
-        // Get.find<TokenServices>().upIdTypeIDModel.value =
-        //     UpIdTypeModel(upIdTypeID: decoded["upid_type"], showCareRecipientAssessmentScreens: decoded["loved_one_active"]);
-        // Get.offAll(() => const ThankYouForCrateAccountScreen());
-        // loginApiHit();
-        // _apiSelectLanguage(preferredLanguageMapping: selectedPreferredLanguageMapping);
-
-        Get.delete<SignupScreenServices>();
+        showToast(center: true, "Account created successfully !!", showToastInReleaseMode: true);
+        if (decoded["data"] != null && decoded["data"]["userid"] != null) {
+          showPrint(decoded["data"]["userid"].toString());
+          Get.find<TokenServices>().userid = decoded["data"]["userid"].toString();
+          Get.find<TokenServices>().userFirstName = firstNameController.text.trim();
+          Get.find<TokenServices>().userLastName = lastNameController.text.trim();
+          Get.toNamed(ScreenNames.home.routeName);
+          Get.delete<SignupScreenServices>();
+        } else {
+          // Handle the case when the "data" or "userid" key is not present in the response
+          showPrint("Invalid response format");
+          // Additional error handling or user feedback can be added here
+        }
+      } else {
+        // Handle the case when the status is not "success"
+        showPrint("Account creation failed: ${decoded["status"]}");
+        // Additional error handling or user feedback can be added here
       }
-    } catch (error, stackTrace) {
+  } catch (error, stackTrace) {
       showToast(
           center: true,
           "Please Contact Support!",
