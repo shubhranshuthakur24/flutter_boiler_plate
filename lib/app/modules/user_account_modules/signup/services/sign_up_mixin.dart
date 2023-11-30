@@ -93,7 +93,7 @@ mixin SignUpApiMixin {
         "last_name": lastNameController.text.trim(),
         if (firebaseToken != null) "firebase_id": firebaseToken,
       });
-
+      showPrint("line 96");
       showPrint(decoded.toString());
       buttonPressed.value = false;
 
@@ -104,7 +104,7 @@ mixin SignUpApiMixin {
 
       if (decoded["status"] == "success") {
         showToast(center: true, "Account created successfully !!", showToastInReleaseMode: true);
-        if (decoded["data"] != null && decoded["data"]["userid"] != null) {
+        if (decoded["data"] != null ) {
           showPrint(decoded["data"]["userid"].toString());
           Get.find<TokenServices>().userid = decoded["data"]["userid"].toString();
           Get.find<TokenServices>().userFirstName = firstNameController.text.trim();
