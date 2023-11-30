@@ -22,10 +22,7 @@ class ProfileScreenServices extends GetxController {
     String res = "";
 
     try {
-      Map<String, dynamic>? decoded = await ApiGetPostMethodUniversal.postMethod(apiUrl: ApiEndpoints.getUserProfile,tokenRequired:true, body: {
-
-        // if (firebaseToken != null) "firebase_id": firebaseToken,
-      });
+      Map<String, dynamic>? decoded = await ApiGetPostMethodUniversal.getMethod(apiUrl: ApiEndpoints.getUserProfile,);
       showPrint(decoded.toString());
       // buttonPressed.value = false;
 

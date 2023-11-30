@@ -15,7 +15,6 @@ class TokenServices extends GetxController {
   void onInit() {
     super.onInit();
     // changeFontSizeAccordingToDevice();
-
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user != null) showPrint("uniqueId: ${user.uid.toString()}");
     });

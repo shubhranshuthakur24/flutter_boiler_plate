@@ -11,12 +11,12 @@ abstract class ApiGetPostMethodUniversal {
     Map<String, dynamic>? apiData;
     try {
       http.Response httpResponse = await http.get(Uri.parse(apiUrl),
-          headers: ({"Authorization": "Token eyJhbGciOiJSUzI1NiIsImtpZCI6IjAzZDA3YmJjM2Q3NWM2OTQyNzUxMGY2MTc0ZWIyZjE2NTQ3ZDRhN2QiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vZ3ZoZWFsdGgtd2ViIiwiYXVkIjoiZ3ZoZWFsdGgtd2ViIiwiYXV0aF90aW1lIjoxNjk1ODc5OTg2LCJ1c2VyX2lkIjoiTWVQZzN0aHlVZ1JlTkh0Yzl2NzhFbHE4cG1pMSIsInN1YiI6Ik1lUGczdGh5VWdSZU5IdGM5djc4RWxxOHBtaTEiLCJpYXQiOjE2OTc4NjUyMzEsImV4cCI6MTY5Nzg2ODgzMSwiZW1haWwiOiJ0ZXN0YWNjc2h1YmgxMDErMTExQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJ0ZXN0YWNjc2h1YmgxMDErMTExQGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.IVxjO2Dvt5Kxi49xMU_bIcNDu-Fm9yTZTJbCaO7lUg8o-vYtM8sZCcVCja5nVkYByeJLEhZq1s4Btb-Wq0R5UUnxoHtHxUcwMKgpFH4nf0vzwLaqgfZO9KbVsLX3sVs-kE87mizd_eja4Y2f1WFZ4aDhZ6k5OOnhYQK5fCZNcJBFmAXKR9nIn9KmmXzhoEkePL-u49ZjKf_rZSTtsJHXpO8vkh2fBC5TLJDVE8bj7TCfVqNUu-R_XIKfHse-34sVSdDUwhHL9otlTixycML-XABpD8_xWYdNLWUzkdoij879K6BjKF2XAAh-gJ0L7hEbaoUMEtvV75VYejSPFS5jeQ"}));
+          headers: ({"Authorization": "Token ${Get.find<TokenServices>().idToken}"}));
       if (httpResponse.statusCode == 200) {
       } else if (httpResponse.statusCode == 401) {
         // await Get.find<TokenServices>().getAuthTokenFromFirebase();
         httpResponse = await http.get(Uri.parse(apiUrl),
-            headers: ({"Authorization": "Token eyJhbGciOiJSUzI1NiIsImtpZCI6IjAzZDA3YmJjM2Q3NWM2OTQyNzUxMGY2MTc0ZWIyZjE2NTQ3ZDRhN2QiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vZ3ZoZWFsdGgtd2ViIiwiYXVkIjoiZ3ZoZWFsdGgtd2ViIiwiYXV0aF90aW1lIjoxNjk1ODc5OTg2LCJ1c2VyX2lkIjoiTWVQZzN0aHlVZ1JlTkh0Yzl2NzhFbHE4cG1pMSIsInN1YiI6Ik1lUGczdGh5VWdSZU5IdGM5djc4RWxxOHBtaTEiLCJpYXQiOjE2OTc4NjUyMzEsImV4cCI6MTY5Nzg2ODgzMSwiZW1haWwiOiJ0ZXN0YWNjc2h1YmgxMDErMTExQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJ0ZXN0YWNjc2h1YmgxMDErMTExQGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.IVxjO2Dvt5Kxi49xMU_bIcNDu-Fm9yTZTJbCaO7lUg8o-vYtM8sZCcVCja5nVkYByeJLEhZq1s4Btb-Wq0R5UUnxoHtHxUcwMKgpFH4nf0vzwLaqgfZO9KbVsLX3sVs-kE87mizd_eja4Y2f1WFZ4aDhZ6k5OOnhYQK5fCZNcJBFmAXKR9nIn9KmmXzhoEkePL-u49ZjKf_rZSTtsJHXpO8vkh2fBC5TLJDVE8bj7TCfVqNUu-R_XIKfHse-34sVSdDUwhHL9otlTixycML-XABpD8_xWYdNLWUzkdoij879K6BjKF2XAAh-gJ0L7hEbaoUMEtvV75VYejSPFS5jeQ"}));
+            headers: ({"Authorization": "Token ${Get.find<TokenServices>().idToken}"}));
       }
       apiData = jsonDecode(httpResponse.body);
     } catch (error) {
@@ -42,7 +42,6 @@ abstract class ApiGetPostMethodUniversal {
     Map<String, dynamic>? apiData;
     try {
       var headers = tokenRequired?{
-        'Content-Type': 'application/json',
         'Authorization': "Token ${Get.find<TokenServices>().idToken}",
       }:{
         'Content-Type': 'application/json',
