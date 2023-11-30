@@ -19,7 +19,6 @@ mixin MixinGetCgProfile {
       }
 
       if (decoded.containsKey('status') && decoded['status'] == 'success') {
-        // Check if the decoded JSON has the expected structure
         userScreenModel.value = ProfileModel.fromJson(decoded);
       }
 
