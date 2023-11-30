@@ -21,8 +21,6 @@ mixin MixinGetCgProfile {
       if (decoded.containsKey('status') && decoded['status'] == 'success') {
         // Check if the decoded JSON has the expected structure
         userScreenModel.value = ProfileModel.fromJson(decoded);
-        showPrint(" line 24");
-        showPrint(userScreenModel.value!.email.toString());
       }
 
       showPrint(decoded.runtimeType.toString());

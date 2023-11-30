@@ -93,7 +93,6 @@ mixin SignUpApiMixin {
         "last_name": lastNameController.text.trim(),
         if (firebaseToken != null) "firebase_id": firebaseToken,
       });
-      showPrint("line 96");
       showPrint(decoded.toString());
       buttonPressed.value = false;
 

@@ -43,7 +43,6 @@ class SignupScreenServices extends GetxController with  SignUpApiMixin {
         // User registration successful
         signupScreenServices.buttonPressed.value = true;
         showPrint(result.toString());
-        showPrint("line 24");
         apiSignUp(
           firebaseToken: FirebaseAuth.instance.currentUser!.uid,
           email: FirebaseAuth.instance.currentUser!.email,
@@ -67,7 +66,6 @@ class SignupScreenServices extends GetxController with  SignUpApiMixin {
         showToast(center: true, er, showToastInReleaseMode: true);
         showPrint(e.code.toString());
       }
-      showToast("line 42 from signup services");
       signupScreenServices.buttonPressed.value = false;
     } catch (e, stackTrace) {
       String er = e.toString();
