@@ -9,10 +9,11 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../../../helpers/api_related_services/api_get_post_services.dart';
 import '../../../../../helpers/api_related_services/apis_endpoint.dart';
+import '../../../../../helpers/token_services/token_services.dart';
 import '../../../../../styles/constants.dart';
-import '../../../user_profille/view/user_profile_screen.dart';
+import '../../profile/services/mixin_get_cg_profile.dart';
 
-class ProfileUpdateServices extends GetxController {
+class ProfileUpdateServices extends GetxController with MixinGetCgProfile{
   bool hasAnythingChanged = false;
   // final MenuServices userBioServicesController = Get.find();
   // final ProfileImageUploadFirebase _profileImageUploadFirebase = Get.put(ProfileImageUploadFirebase());
@@ -39,13 +40,14 @@ class ProfileUpdateServices extends GetxController {
   @override
   onInit() {
     super.onInit();
-    // try {
-    //   List dobList = userBioServicesController.userScreenModel.value!.cgDob.split("-");
-    //   dob = dobList[dobList.length - 1] ?? "";
-    // } catch (error, stackTrace) {
-    //   SentryFunction.captureErrorFromTryCatchBlock(error: error, stackTrace: stackTrace);
-    //   dob = "";
-    // }
+    apiGetCgProfile();
+    try {
+      List dobList = userScreenModel.value!.cgDob.split("-");
+      dob = dobList[dobList.length - 1] ?? "";
+    } catch (error, stackTrace) {
+      // SentryFunction.captureErrorFromTryCatchBlock(error: error, stackTrace: stackTrace);
+      dob = "";
+    }
     dob = "04-06-2004";
     cgFirstName = "Test";
     cgLastName = "Account";
@@ -67,9 +69,9 @@ class ProfileUpdateServices extends GetxController {
   }
 
   void cgProfileUpdate() {
-    showLoading(title: "TrKeys.saving.name.tr");
+    showLoading(title: "Saving ...");
     if (cgFullNameEditingController.text.trim().isEmpty) {
-      showToast("TrKeys.pleaseEnterName.name.tr", showToastInReleaseMode: true);
+      showToast("Please Enter Name", showToastInReleaseMode: true);
       hideLoading();
       return;
     }
@@ -80,9 +82,9 @@ class ProfileUpdateServices extends GetxController {
     // }
     if (cgZipcodeEditingController.text.trim().length < 5 || !GetUtils.isNum(cgZipcodeEditingController.text.trim())) {
       if (cgZipcodeEditingController.text.trim().isEmpty) {
-        showToast("TrKeys.zipCodeCantBeEmpty.name.tr", showToastInReleaseMode: true);
+        showToast("Zip Code Can't Be Empty", showToastInReleaseMode: true);
       } else {
-        showToast("TrKeys.pleaseEnterValidZipCode.name.tr", showToastInReleaseMode: true);
+        showToast("Please Enter Valid Zip Code ", showToastInReleaseMode: true);
       }
 
       hideLoading();
@@ -141,7 +143,7 @@ class ProfileUpdateServices extends GetxController {
 
     // List<String> splitNameList = StringManipulation.nameSplit(fullname: cgFullNameEditingController.text.trim());
     Map<String, dynamic>? decoded = await ApiGetPostMethodUniversal.postMethod(apiUrl: ApiEndpoints.updateUserProfile, body: {
-      "profile_picurl": "Get.find<TokenServices>().userProfileUrlUniversal.value.trim()",
+      "profile_picurl": Get.find<TokenServices>().userProfilePictureUrl.value.trim(),
       "firstname": "splitNameList[0].trim().toLowerCase()",
       "lastname": "splitNameList[1].trim().toLowerCase()",
       "zipcode": zipcode.trim(),
@@ -161,5 +163,15 @@ class ProfileUpdateServices extends GetxController {
     hasAnythingChanged = true;
 
     return res;
+  }
+  static String ageCalculator(String dob) {
+    String age = "";
+    try {
+      var dobSplit = dob.split("-");
+      age = (DateTime.now().year.toInt() - int.parse(dobSplit.last)).toString();
+    } catch (error, stackTrace) {
+      // SentryFunction.captureErrorFromTryCatchBlock(error: error, stackTrace: stackTrace);
+    }
+    return age.toString();
   }
 }
