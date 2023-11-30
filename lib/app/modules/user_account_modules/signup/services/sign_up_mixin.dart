@@ -41,9 +41,9 @@ mixin SignUpApiMixin {
   String? emailStringReturn() {
     if (!GetUtils.isEmail(emailController.text.trim())) {
       if (emailController.text.trim().isEmpty) {
-        return "emailCantBeEmpty";
+        return "Email Can' t Be Empty";
       } else {
-        return "pleaseEnterValidEmail";
+        return "Please Enter Valid Email";
       }
     }
     return null;
@@ -53,9 +53,9 @@ mixin SignUpApiMixin {
     if (!GetUtils.isLengthGreaterThan(passwordController.text.trim(), 7) ||
         !regExpPassword.hasMatch(passwordController.text.trim())) {
       if ((!GetUtils.isLengthGreaterThan(passwordController.text.trim(), 7))) {
-        return "passwordMinimumLengthShouldBeEightCharacter";
+        return "Password Minimum Length Should Be Eight Character";
       } else {
-        return "passwordMustContainsOneUpperCaseOneLowerCaseOneNumericalAndOneSpecialCharacter";
+        return "Password Must Contains One Upper Case One Lower Case One Numerical And One Special Character";
       }
     }
     return null;
@@ -63,9 +63,9 @@ mixin SignUpApiMixin {
 
   String? confirmPasswordStringReturn() {
     if (confirmPasswordConfirmController.text.trim().isEmpty) {
-      return "confirmPasswordCantBeEmpty";
+      return "Confirm Password Can't Be Empty";
     } else if (confirmPasswordConfirmController.text.trim() != passwordController.text.trim()) {
-      return "passwordAndConfirmPasswordAreNotSame";
+      return "Password And ConfirmPassword Are Not Same";
     }
     return null;
   }
