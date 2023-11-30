@@ -1,61 +1,43 @@
 import 'package:get/get.dart';
-
 import '../../../../../helpers/api_related_services/api_get_post_services.dart';
 import '../../../../../helpers/api_related_services/apis_endpoint.dart';
-import '../../../../../routes/screen_names.dart';
 import '../../../../../styles/constants.dart';
-import '../../../../../utils/internationalization_using_getx/preferred_language_mapping.dart';
 import '../models/profile_model.dart';
-
 
 mixin MixinGetCgProfile {
   Rxn<ProfileModel> userScreenModel = Rxn();
   RxBool apiLoading = true.obs;
 
   Future<dynamic> apiGetCgProfile() async {
-    // LocalDbServices.readApiDataInLocalDb(
-    //     screenNameEnums: ScreenNames.menu, functionReferenceForStoreLocalDbDataInToDartVariable: apiDataStoreInDartVariable);
-    dynamic res;
-    Map<String, dynamic>? decoded = await ApiGetPostMethodUniversal.getMethod(apiUrl: ApiEndpoints.getUserProfile);
-    showPrint(decoded.runtimeType.toString());
-    if (decoded == null) return;
-    hideLoading();
+    try {
+      Map<String, dynamic>? decoded =
+      await ApiGetPostMethodUniversal.getMethod(apiUrl: ApiEndpoints.getUserProfile);
 
-    res = decoded;
+      if (decoded == null) {
+        // Handle the case when there's no data
+        return null;
+      }
 
-    // LocalDbServices.saveApiDataInLocalDb(decodedResponse: decoded, screenNameEnums: ScreenNames.menu);
-    apiDataStoreInDartVariable(decoded);
-    // try {
-    //   PreferredLanguageMapping? preferredLanguageMapping =
-    //       preferredLanguageList.firstWhereOrNull((element) => element.languageId == userScreenModel.value?.languageId.first);
-    //   if (preferredLanguageMapping != null) {
-    //     await changeLanguageAndStoreInLocalDb(preferredLanguageMapping: preferredLanguageMapping);
-    //   }
-    // } catch (error) {}
+      if (decoded.containsKey('status') && decoded['status'] == 'success') {
+        // Check if the decoded JSON has the expected structure
+        userScreenModel.value = ProfileModel.fromJson(decoded);
+        showPrint(" line 24");
+        showPrint(userScreenModel.value!.email.toString());
+      }
 
-    apiLoading.value = false;
-    return res;
-  }
+      showPrint(decoded.runtimeType.toString());
 
-  void apiDataStoreInDartVariable(Map<String, dynamic> decodedData) {
-    userScreenModel.value = ProfileModel.fromJson(decodedData["data"]);
-    apiLoading.value = false;
-  }
+      hideLoading();
 
-  Future<dynamic> apiSelectLanguage({required PreferredLanguageMapping preferredLanguageMapping}) async {
-    String languageIdString = "";
-    for (int i in userScreenModel.value!.languageId) {
-      languageIdString = "$languageIdString $i";
-      languageIdString = languageIdString.trim();
+      apiLoading.value = false;
+      return decoded;
+    } catch (error) {
+      // Handle the error, e.g., show an error message
+      showPrint('Error: $error');
+      return null;
     }
-    // try {
-    //   Map<String, dynamic>? decoded = await ApiGetPostMethodUniversal.postMethod(
-    //       apiUrl: ApiEndpoints.selectLanguageUrl, body: {"languageid": languageIdString.trim()});
-    //   if (decoded == null) return;
-    //   await LocalDbServices.localDbDataClearForSpecificScreen(screenNameEnums: ScreenNames.menu);
-    //   apiGetCgProfile();
-    // } catch (error, stackTrace) {
-    //   SentryFunction.captureErrorFromTryCatchBlock(error: error, stackTrace: stackTrace);
-    // }
   }
+
+
 }
+

@@ -11,6 +11,7 @@ import '../../../../../helpers/api_related_services/api_get_post_services.dart';
 import '../../../../../helpers/api_related_services/apis_endpoint.dart';
 import '../../../../../helpers/token_services/token_services.dart';
 import '../../../../../styles/constants.dart';
+import '../../profile/models/profile_model.dart';
 import '../../profile/services/mixin_get_cg_profile.dart';
 
 class ProfileUpdateServices extends GetxController with MixinGetCgProfile{
@@ -23,12 +24,8 @@ class ProfileUpdateServices extends GetxController with MixinGetCgProfile{
   late String cgLastName;
   late String cgEmail;
   late String cgContactDetails;
-  late TextEditingController cgZipcodeEditingController;
   late TextEditingController cgFullNameEditingController;
   late TextEditingController cgEmailEditingController;
-  late TextEditingController cgDobEditingController;
-  late TextEditingController cgMantraController;
-  late TextEditingController cgContactDetailsEditingController;
   final picker = ImagePicker();
   var image;
   var file;
@@ -41,25 +38,30 @@ class ProfileUpdateServices extends GetxController with MixinGetCgProfile{
   onInit() {
     super.onInit();
     apiGetCgProfile();
-    try {
-      List dobList = userScreenModel.value!.cgDob.split("-");
-      dob = dobList[dobList.length - 1] ?? "";
-    } catch (error, stackTrace) {
-      // SentryFunction.captureErrorFromTryCatchBlock(error: error, stackTrace: stackTrace);
-      dob = "";
-    }
-    dob = "04-06-2004";
-    cgFirstName = "Test";
-    cgLastName = "Account";
-    cgEmail = "testaccshubh101@gmail.com";
-    cgZipcode = "452010";
-    cgZipcodeEditingController = TextEditingController(text: cgZipcode);
-    cgFullNameEditingController = TextEditingController(text: "$cgFirstName $cgLastName");
+
+
+    // try {
+    //   List dobList = userScreenModel.value!.cgDob.split("-");
+    //   dob = dobList[dobList.length - 1] ?? "";
+    // } catch (error, stackTrace) {
+    //   // SentryFunction.captureErrorFromTryCatchBlock(error: error, stackTrace: stackTrace);
+    //   dob = "";
+    // }
+    showPrint("printMessage");
+    showPrint(userScreenModel.value.toString());
+
+    // dob = "04-06-2004";
+    cgFirstName = userScreenModel.value?.cgFirstName ?? "" ;
+    cgLastName = userScreenModel.value?.cgLastName ?? "";
+    cgEmail = userScreenModel.value!.email;
+    // cgZipcode = "452010";
+    // cgZipcodeEditingController = TextEditingController(text: cgZipcode);
+    // cgFullNameEditingController = TextEditingController(text: "$cgFirstName $cgLastName");
     cgEmailEditingController = TextEditingController(text: cgEmail);
-    cgDobEditingController = TextEditingController(text: dob);
-    cgMantraController = TextEditingController(text: "userBioServicesController.userScreenModel.value!.myMantra");
-    cgContactDetails = "8943892332";
-    cgContactDetailsEditingController = TextEditingController(text: cgContactDetails);
+    // cgDobEditingController = TextEditingController(text: dob);
+    // cgMantraController = TextEditingController(text: "userBioServicesController.userScreenModel.value!.myMantra");
+    // cgContactDetails = "8943892332";
+    // cgContactDetailsEditingController = TextEditingController(text: cgContactDetails);
   }
 
   @override
@@ -80,16 +82,16 @@ class ProfileUpdateServices extends GetxController with MixinGetCgProfile{
     //   hideLoading();
     //   return;
     // }
-    if (cgZipcodeEditingController.text.trim().length < 5 || !GetUtils.isNum(cgZipcodeEditingController.text.trim())) {
-      if (cgZipcodeEditingController.text.trim().isEmpty) {
-        showToast("Zip Code Can't Be Empty", showToastInReleaseMode: true);
-      } else {
-        showToast("Please Enter Valid Zip Code ", showToastInReleaseMode: true);
-      }
-
-      hideLoading();
-      return;
-    }
+    // if (cgZipcodeEditingController.text.trim().length < 5 || !GetUtils.isNum(cgZipcodeEditingController.text.trim())) {
+    //   if (cgZipcodeEditingController.text.trim().isEmpty) {
+    //     showToast("Zip Code Can't Be Empty", showToastInReleaseMode: true);
+    //   } else {
+    //     showToast("Please Enter Valid Zip Code ", showToastInReleaseMode: true);
+    //   }
+    //
+    //   hideLoading();
+    //   return;
+    // }
     // if (!true(dobYear: cgDobEditingController.text.trim())) {
     //   if (cgDobEditingController.text.trim().isEmpty) {
     //     showToast(TrKeys.pleaseEnterYourValidYearOfBirth.name.tr, showToastInReleaseMode: true);
@@ -100,28 +102,28 @@ class ProfileUpdateServices extends GetxController with MixinGetCgProfile{
     //   return;
     // }
     if (GetPlatform.isWeb) {
-      if (fileForWeb.path == "zz") {
-        apiUpdateUserDetailsWithImage(
-          zipcode: cgZipcodeEditingController.text,
-          dob: cgDobEditingController.text,
-          contactNumber: cgContactDetailsEditingController.text,
-        );
-      } else {
-        // _profileImageUploadFirebase.uploadImage(picName: "cgProfilePic", file: webImage).then((value) {
-        //   apiUpdateUserDetailsWithImage(
-        //     zipcode: cgZipcodeEditingController.text,
-        //     dob: cgDobEditingController.text,
-        //     contactNumber: cgContactDetailsEditingController.text,
-        //   );
-        // });
-      }
+      // if (fileForWeb.path == "zz") {
+      //   apiUpdateUserDetailsWithImage(
+      //     zipcode: cgZipcodeEditingController.text,
+      //     dob: cgDobEditingController.text,
+      //     contactNumber: cgContactDetailsEditingController.text,
+      //   );
+      // } else {
+      //   // _profileImageUploadFirebase.uploadImage(picName: "cgProfilePic", file: webImage).then((value) {
+      //   //   apiUpdateUserDetailsWithImage(
+      //   //     zipcode: cgZipcodeEditingController.text,
+      //   //     dob: cgDobEditingController.text,
+      //   //     contactNumber: cgContactDetailsEditingController.text,
+      //   //   );
+      //   // });
+      // }
     } else {
       if (image == null) {
-        apiUpdateUserDetailsWithImage(
-          zipcode: cgZipcodeEditingController.text,
-          dob: cgDobEditingController.text,
-          contactNumber: cgContactDetailsEditingController.text,
-        );
+        // apiUpdateUserDetailsWithImage(
+        //   zipcode: cgZipcodeEditingController.text,
+        //   dob: cgDobEditingController.text,
+        //   contactNumber: cgContactDetailsEditingController.text,
+        // );
       } else {
         // _profileImageUploadFirebase.uploadImage(picName: "cgProfilePic", file: file).then((value) {
         //   apiUpdateUserDetailsWithImage(
