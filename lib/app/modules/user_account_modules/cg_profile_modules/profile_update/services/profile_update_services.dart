@@ -11,7 +11,6 @@ import '../../../../../helpers/api_related_services/api_get_post_services.dart';
 import '../../../../../helpers/api_related_services/apis_endpoint.dart';
 import '../../../../../helpers/token_services/token_services.dart';
 import '../../../../../styles/constants.dart';
-import '../../profile/models/profile_model.dart';
 import '../../profile/services/mixin_get_cg_profile.dart';
 
 class ProfileUpdateServices extends GetxController with MixinGetCgProfile{
