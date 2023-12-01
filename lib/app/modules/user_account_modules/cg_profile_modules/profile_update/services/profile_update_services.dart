@@ -35,6 +35,7 @@ class ProfileUpdateServices extends GetxController with MixinGetCgProfile{
   onInit() {
     super.onInit();
     apiGetCgProfile();
+    apiUpdateUserDetailsWithImage(zipcode: '', dob: '', contactNumber: '');
 
 
     // try {
