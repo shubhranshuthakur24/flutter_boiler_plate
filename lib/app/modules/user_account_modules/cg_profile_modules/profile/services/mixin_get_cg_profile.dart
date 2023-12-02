@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import '../../../../../helpers/api_related_services/api_get_post_services.dart';
 import '../../../../../helpers/api_related_services/apis_endpoint.dart';
@@ -7,11 +9,14 @@ import '../models/profile_model.dart';
 mixin MixinGetCgProfile {
   Rxn<ProfileModel> userScreenModel = Rxn();
   RxBool apiLoading = true.obs;
+  // var user_data;
+
 
   Future<dynamic> apiGetCgProfile() async {
     try {
       Map<String, dynamic>? decoded =
       await ApiGetPostMethodUniversal.getMethod(apiUrl: ApiEndpoints.getUserProfile);
+
 
       if (decoded == null) {
         // Handle the case when there's no data
@@ -20,9 +25,12 @@ mixin MixinGetCgProfile {
 
       if (decoded.containsKey('status') && decoded['status'] == 'success') {
         userScreenModel.value = ProfileModel.fromJson(decoded);
+        return userScreenModel;
       }
 
       showPrint(decoded.runtimeType.toString());
+      // showPrint("decoded.runtimeType.toString()");
+
 
       hideLoading();
 

@@ -14,73 +14,90 @@ import '../../../../utils/internationalization_using_getx/tr_keys.dart';
 import '../services/user_profile_services.dart';
 
 class ProfileScreen extends GetView <ProfileScreenServices> {
+
   const ProfileScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kColorSteelGray,
-      body: SideBarPanel(
-        showSideMenu: true,
-        child: Align(
-          alignment: Alignment.topLeft,
-          child: Column(
-            children: [
-              const kAppBarWidgetWithBackButton(
-                title: "Profile",
-              ),
+    // Access the controller and userScreenModel.value
+    ProfileScreenServices controller = Get.find();
 
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 19),
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 28,
-                        ),
-                        TopWidget(
-                        heading: "Profile",
-                        name:"",
-                        city:"",
-                        onTapEditProfileButton: () {Get.toNamed(ScreenNames.editProfile.routeName);},
-                        profileUrl: "",
-                        dob: "04-06-2003",
-                        ),
-                        const SizedBox(
-                          height: 24,
-                        ),
-                        headingAndBodyWidget(
+
+    // Check if userScreenModel has data before building the UI
+    if (controller.userScreenModel.value != null) {
+      return Scaffold(
+        backgroundColor: kColorSteelGray,
+        body: SideBarPanel(
+          showSideMenu: true,
+          child: Align(
+            alignment: Alignment.topLeft,
+            child: Column(
+              children: [
+                const kAppBarWidgetWithBackButton(
+                  title: "Profile",
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 19),
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 28,
+                          ),
+                          TopWidget(
+                            heading: "Profile",
+                            name: "",
+                            city: "",
+                            onTapEditProfileButton: () {
+                              Get.toNamed(ScreenNames.editProfile.routeName);
+                            },
+                            profileUrl: "",
+                            dob: "04-06-2003",
+                          ),
+                          const SizedBox(
+                            height: 24,
+                          ),
+                          headingAndBodyWidget(
                             disabledBool: true,
                             heading: "Email",
-                            body: "email",
-                            icon: "emailblue.png"),
-                        headingAndBodyWidget(
+                            body: controller.userScreenModel.value!.email,
+                            icon: "emailblue.png",
+                          ),
+                          headingAndBodyWidget(
                             disabledBool: false,
-                            heading: "Zip Code",
-                            body: "zipcode",
-                            icon: "zipCodeBlue.png"),
-                        headingAndBodyWidget(
+                            heading: "First Name",
+                            body: controller.userScreenModel.value!.cgFirstName,
+                            icon: "zipCodeBlue.png",
+                          ),
+                          headingAndBodyWidget(
                             disabledBool: false,
-                            heading: "Year Of Birth",
-                            body: "cgDob",
-                            icon: "yearOfBirthBlue.png"),
-                        headingAndBodyWidget(
+                            heading: "Last Name",
+                            body: controller.userScreenModel.value!.cgLastName,
+                            icon: "yearOfBirthBlue.png",
+                          ),
+                          headingAndBodyWidget(
                             disabledBool: false,
                             heading: "Contact Number",
                             body: "phone",
-                            icon: "contractNumberBlue.png"),
-                      ],
+                            icon: "contractNumberBlue.png",
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              )
-            ],
+              ],
+            ),
           ),
         ),
-      ),
-    );
+      );
+    } else {
+      // Return a loading indicator or handle the case where userScreenModel is still loading
+      return CircularProgressIndicator();
+    }
   }
+
 
   Column headingAndBodyWidget({required String heading, required String body, required String icon, required bool disabledBool}) {
     return Column(
