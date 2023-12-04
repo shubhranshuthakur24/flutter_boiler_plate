@@ -22,7 +22,7 @@ class SignInScreenServices extends GetxController with FirebaseAuthSignInWithEma
   void onInit() {
     // This is the onInit method, it will be called automatically when the controller is initialized.
     super.onInit(); // Don't forget to call super.onInit() to ensure proper initialization of the controller.
-    emailController.text = "testaccshubh101@gmail.com";
+    emailController.text = "testaccshubh101+15@gmail.com";
     passwordController.text = "Testing123!";
     // Initialize any variables or perform setup here\
   }
