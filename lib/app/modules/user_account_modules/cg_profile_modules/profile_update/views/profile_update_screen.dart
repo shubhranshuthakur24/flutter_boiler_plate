@@ -25,7 +25,7 @@ class ProfileUpdateScreen extends StatefulWidget {
 }
 
 class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
-  ProfileUpdateServices careGiverUpdateServices = Get.put(ProfileUpdateServices());
+  ProfileUpdateServices controller = Get.put(ProfileUpdateServices());
   bool isImageLoading = false;
 
   @override
@@ -93,7 +93,7 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                             Expanded(
                               child: customInkWell(
                                 onTap: () {
-                                  careGiverUpdateServices.cgProfileUpdate();
+                                  controller.cgProfileUpdate();
                                 },
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
@@ -125,29 +125,29 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                           clipBehavior: Clip.none,
                           children: [
                             GetPlatform.isWeb
-                                ? careGiverUpdateServices.fileForWeb.path != "zz" ||
+                                ? controller.fileForWeb.path != "zz" ||
                                 false
                                 ? Container(
-                              child: careGiverUpdateServices.fileForWeb.path == "zz"
+                              child: controller.fileForWeb.path == "zz"
                                   ? kImageWidget(
                                   imageRadius: 60,
                                   imageUrl: "",
-                                  name: careGiverUpdateServices.cgFullNameEditingController.text)
+                                  name: controller.cgFullNameEditingController.text)
                                   : ClipRRect(
                                   borderRadius: BorderRadius.circular(100.0),
                                   child: CircleAvatar(
                                     backgroundColor: kColorBlueExtraLight,
                                     radius: 60,
-                                    backgroundImage: MemoryImage(careGiverUpdateServices.webImage), //here
+                                    backgroundImage: MemoryImage(controller.webImage), //here
                                   )),
                             )
-                                : nameImage(name: careGiverUpdateServices.cgFullNameEditingController.text)
-                                : careGiverUpdateServices.image == null
+                                : nameImage(name: controller.cgFullNameEditingController.text)
+                                : controller.image == null
                                 ? kImageWidget(
                                 imageRadius: 60,
                                 imageUrl: "",
-                                name: careGiverUpdateServices.cgFullNameEditingController.text)
-                                : CircleAvatar(radius: 60, backgroundImage: FileImage(careGiverUpdateServices.file)),
+                                name: controller.cgFullNameEditingController.text)
+                                : CircleAvatar(radius: 60, backgroundImage: FileImage(controller.file)),
                                 // : nameImage(name: careGiverUpdateServices.cgFullNameEditingController.text),
                             Positioned(
                                 bottom: 0,
@@ -173,14 +173,14 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                                           if (image != null) {
                                             var f = await image.readAsBytes();
                                             setState(() {
-                                              careGiverUpdateServices.fileForWeb = File("a");
-                                              careGiverUpdateServices.webImage = f;
+                                              controller.fileForWeb = File("a");
+                                              controller.webImage = f;
                                             });
                                           } else {}
                                         } else {
-                                          careGiverUpdateServices.image = await careGiverUpdateServices.picker.pickImage(
+                                          controller.image = await controller.picker.pickImage(
                                               source: ImageSource.gallery, maxHeight: 200, maxWidth: 200, imageQuality: 50);
-                                          careGiverUpdateServices.file = File(careGiverUpdateServices.image!.path);
+                                          controller.file = File(controller.image!.path);
                                         }
                                       } catch (error, stackTrace) {
                                         // SentryFunction.captureErrorFromTryCatchBlock(error: error, stackTrace: stackTrace);
@@ -207,7 +207,7 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                       ),
                       ProfileTextFieldsWidget(
                         assestImageName: "nameTagBlack.png",
-                        textEditingController: careGiverUpdateServices.cgFullNameEditingController,
+                        textEditingController: controller.cgFullNameEditingController,
                         type: "Name",
                         // text: "${careGiverUpdateServices.cgFirstName} ${careGiverUpdateServices.cgLastName}",
                         maxInputCharLength: 33,
@@ -218,7 +218,7 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                           child: ProfileTextFieldsWidget(
                             textColor: kColorGray,
                             assestImageName: "emailBlack.png",
-                            textEditingController: careGiverUpdateServices.cgEmailEditingController,
+                            textEditingController: controller.cgEmailEditingController,
                             type: "email",
                             // text: careGiverUpdateServices.cgEmail,
                             maxInputCharLength: 32,
@@ -261,7 +261,7 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
           ),
         ),
         onWillPop: () async {
-          if (careGiverUpdateServices.hasAnythingChanged == true) {
+          if (controller.hasAnythingChanged == true) {
             // UserBioServices.apiGetCgProfile(navigateMethod: "off");
             // Get.offAll(() => const MenuScreen());
           } else {

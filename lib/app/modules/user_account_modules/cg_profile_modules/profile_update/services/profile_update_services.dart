@@ -39,7 +39,13 @@ class ProfileUpdateServices extends GetxController with MixinGetCgProfile{
     super.onInit();
     apiGetCgProfile();
 
-
+// Initialize cgFullNameEditingController here
+    cgFirstName = "";
+    cgLastName = "";
+    cgEmail = "";
+    cgContactDetails = "";
+    cgFullNameEditingController = TextEditingController(
+        text: "$cgFirstName $cgLastName");
     // try {
     //   List dobList = userScreenModel.value!.cgDob.split("-");
     //   dob = dobList[dobList.length - 1] ?? "";
