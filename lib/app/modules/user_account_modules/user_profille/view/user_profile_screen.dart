@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_boiler_plate/app/styles/constants.dart';
 import 'package:get/get.dart';
 
 import '../../../../components/const_widgets/change_with_image_widget.dart';
@@ -14,75 +15,90 @@ import '../../../../utils/internationalization_using_getx/tr_keys.dart';
 import '../services/user_profile_services.dart';
 
 class ProfileScreen extends GetView <ProfileScreenServices> {
+
   const ProfileScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kColorSteelGray,
-      body: SideBarPanel(
-        showSideMenu: true,
-        child: Align(
-          alignment: Alignment.topLeft,
-          child: Column(
-            children: [
-              const kAppBarWidgetWithBackButton(
-                title: "Profile",
-              ),
-
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 19),
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 28,
+    return Obx(() {
+        return Scaffold(
+          backgroundColor: kColorSteelGray,
+          body:SideBarPanel(
+            showSideMenu: true,
+            child:controller.apiLoading.value ?showSpinkitRing():controller.userScreenModel.value != null?
+            Align(
+              alignment: Alignment.topLeft,
+              child: Column(
+                children: [
+                  const kAppBarWidgetWithBackButton(
+                    title: "Profile",
+                  ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 19),
+                        child: Column(
+                          children: [
+                            const SizedBox(
+                              height: 28,
+                            ),
+                            TopWidget(
+                              heading: "Profile",
+                              name: "",
+                              city: "",
+                              onTapEditProfileButton: () {
+                                Get.toNamed(ScreenNames.editProfile.routeName);
+                              },
+                              profileUrl: "",
+                              dob: "04-06-2003",
+                            ),
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            headingAndBodyWidget(
+                              disabledBool: true,
+                              heading: "Email",
+                              body: controller.userScreenModel.value!.email,
+                              icon: "emailblue.png",
+                            ),
+                            headingAndBodyWidget(
+                              disabledBool: false,
+                              heading: "First Name",
+                              body: controller.userScreenModel.value!.cgFirstName,
+                              icon: "zipCodeBlue.png",
+                            ),
+                            headingAndBodyWidget(
+                              disabledBool: false,
+                              heading: "Last Name",
+                              body: controller.userScreenModel.value!.cgLastName,
+                              icon: "yearOfBirthBlue.png",
+                            ),
+                            headingAndBodyWidget(
+                              disabledBool: false,
+                              heading: "Contact Number",
+                              body: "phone",
+                              icon: "contractNumberBlue.png",
+                            ),
+                          ],
                         ),
-                        TopWidget(
-                        heading: "Profile",
-                        name:"",
-                        city:"",
-                        onTapEditProfileButton: () {Get.toNamed(ScreenNames.editProfile.routeName);},
-                        profileUrl: "",
-                        dob: "04-06-2003",
-                        ),
-                        const SizedBox(
-                          height: 24,
-                        ),
-                        headingAndBodyWidget(
-                            disabledBool: true,
-                            heading: "Email",
-                            body: "email",
-                            icon: "emailblue.png"),
-                        headingAndBodyWidget(
-                            disabledBool: false,
-                            heading: "Zip Code",
-                            body: "zipcode",
-                            icon: "zipCodeBlue.png"),
-                        headingAndBodyWidget(
-                            disabledBool: false,
-                            heading: "Year Of Birth",
-                            body: "cgDob",
-                            icon: "yearOfBirthBlue.png"),
-                        headingAndBodyWidget(
-                            disabledBool: false,
-                            heading: "Contact Number",
-                            body: "phone",
-                            icon: "contractNumberBlue.png"),
-                      ],
+                      ),
                     ),
                   ),
-                ),
-              )
-            ],
+                ],
+              ),
+            ):showSpinkitRing(),
           ),
-        ),
-      ),
-    );
+        );
+    });
   }
 
-  Column headingAndBodyWidget({required String heading, required String body, required String icon, required bool disabledBool}) {
+
+  Column headingAndBodyWidget({
+    required String heading,
+    required String body,
+    required String icon,
+    required bool disabledBool,
+  }) {
     return Column(
       children: [
         HeadingWidget(heading: heading, icon: icon),
@@ -93,20 +109,22 @@ class ProfileScreen extends GetView <ProfileScreenServices> {
           padding: const EdgeInsets.symmetric(horizontal: 21, vertical: 18),
           margin: const EdgeInsets.only(bottom: 19),
           width: double.infinity,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: kColorWhite),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15), color: kColorWhite),
           child: Text(
             body,
-            style: kFontNotoSansS18W400Para1.copyWith(color: disabledBool ? kColorGray : kColorBlack),
+            style: kFontNotoSansS18W400Para1.copyWith(
+                color: disabledBool ? kColorGray : kColorBlack),
           ),
         )
       ],
     );
   }
+
 }
 
 
-
-class MenuServices extends GetxController  {
+class MenuServices extends GetxController {
   static bool isScreenCalledFromHomeScreen = false;
 
   @override
@@ -120,14 +138,16 @@ class MenuServices extends GetxController  {
     String age = "";
     try {
       var dobSplit = dob.split("-");
-      age = (DateTime.now().year.toInt() - int.parse(dobSplit.last)).toString();
+      age = (DateTime
+          .now()
+          .year
+          .toInt() - int.parse(dobSplit.last)).toString();
     } catch (error, stackTrace) {
       // SentryFunction.captureErrorFromTryCatchBlock(error: error, stackTrace: stackTrace);
     }
     return age.toString();
   }
 }
-
 
 
 class kAppBarWidgetWithBackButton extends StatelessWidget {
@@ -142,7 +162,8 @@ class kAppBarWidgetWithBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(color: kColorWhite, border: Border(bottom: BorderSide(color: kColorGrayLight))),
+      decoration: const BoxDecoration(color: kColorWhite,
+          border: Border(bottom: BorderSide(color: kColorGrayLight))),
       width: double.infinity,
       padding: const EdgeInsets.only(bottom: 13, right: 8, left: 8),
       height: context.isPhone ? 80 : 103,
@@ -163,9 +184,12 @@ class kAppBarWidgetWithBackButton extends StatelessWidget {
                               },
                           child: Container(
                             padding: context.isPhone
-                                ? const EdgeInsets.only(top: 4, right: 8, left: 8)
-                                : const EdgeInsets.only(top: 7, right: 8, left: 8),
-                            child: const ChangeThisWidgetWithImage(containerHeight: 20, containerWidth: 50,),
+                                ? const EdgeInsets.only(
+                                top: 4, right: 8, left: 8)
+                                : const EdgeInsets.only(
+                                top: 7, right: 8, left: 8),
+                            child: const ChangeThisWidgetWithImage(
+                              containerHeight: 20, containerWidth: 50,),
                             // Image.asset(
                             //   "images/icons/backBlack.png",
                             //   // width: context.isPhone ? 16 : 30,
@@ -188,7 +212,9 @@ class kAppBarWidgetWithBackButton extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 2),
                         child: Text(
                           title,
-                          style: context.isPhone ? kFontLatoS20W400H2 : kFontLatoS30W400H1,
+                          style: context.isPhone
+                              ? kFontLatoS20W400H2
+                              : kFontLatoS30W400H1,
                           maxLines: 2,
                         ),
                       ),
@@ -203,7 +229,8 @@ class kAppBarWidgetWithBackButton extends StatelessWidget {
                         child: Container(
                           padding: context.isPhone
                               ? const EdgeInsets.only(top: 4, right: 8, left: 8)
-                              : const EdgeInsets.only(top: 7, right: 8, left: 8),
+                              : const EdgeInsets.only(
+                              top: 7, right: 8, left: 8),
                           // padding: context.isPhone
                           //     ? const EdgeInsets.only(top: 11, right: 8, left: 8)
                           //     : const EdgeInsets.only(top: 7, right: 8, left: 8),
@@ -228,17 +255,14 @@ class kAppBarWidgetWithBackButton extends StatelessWidget {
 }
 
 
-
-
 class TopWidget extends StatelessWidget {
-  const TopWidget(
-      {Key? key,
-        required this.heading,
-        required this.name,
-        required this.city,
-        required this.onTapEditProfileButton,
-        required this.profileUrl,
-        required this.dob})
+  const TopWidget({Key? key,
+    required this.heading,
+    required this.name,
+    required this.city,
+    required this.onTapEditProfileButton,
+    required this.profileUrl,
+    required this.dob})
       : super(key: key);
   final String heading;
   final String profileUrl;
@@ -251,7 +275,8 @@ class TopWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(color: kColorMaroon, borderRadius: BorderRadius.circular(15)),
+      decoration: BoxDecoration(
+          color: kColorMaroon, borderRadius: BorderRadius.circular(15)),
       padding: kDevicesIsMobile(context)
           ? const EdgeInsets.only(left: 20, top: 30, bottom: 27)
           : const EdgeInsets.symmetric(horizontal: 51, vertical: 41),
@@ -273,25 +298,34 @@ class TopWidget extends StatelessWidget {
                       padding: const EdgeInsets.only(right: 20),
                       child: Text(
                         name,
-                        style: kFontNotoSansS18W400Para1.copyWith(color: kColorWhite, fontWeight: FontWeight.w600),
+                        style: kFontNotoSansS18W400Para1.copyWith(
+                            color: kColorWhite, fontWeight: FontWeight.w600),
                       ),
                     ),
-                    if (dob.trim().isNotEmpty)
+                    if (dob
+                        .trim()
+                        .isNotEmpty)
                       Container(
                         margin: const EdgeInsets.only(top: 3),
                         child: Text(
                           "Age : ",
                           style: kFontNotoSansS18W400Para1.copyWith(
-                              color: kColorWhite, fontWeight: FontWeight.w400, fontSize: context.isPhone ? 12 : 15),
+                              color: kColorWhite,
+                              fontWeight: FontWeight.w400,
+                              fontSize: context.isPhone ? 12 : 15),
                         ),
                       ),
-                    if (city.trim().isNotEmpty)
+                    if (city
+                        .trim()
+                        .isNotEmpty)
                       Container(
                         margin: const EdgeInsets.only(top: 3),
                         child: Text(
                           "${TrKeys.location.name.tr}: $city",
                           style: kFontNotoSansS18W400Para1.copyWith(
-                              color: kColorWhite, fontWeight: FontWeight.w400, fontSize: context.isPhone ? 12 : 15),
+                              color: kColorWhite,
+                              fontWeight: FontWeight.w400,
+                              fontSize: context.isPhone ? 12 : 15),
                         ),
                       ),
                   ],
@@ -310,11 +344,13 @@ class TopWidget extends StatelessWidget {
                     onTapEditProfileButton!();
                   },
                   child: Container(
-                    decoration: BoxDecoration(color: kColorWhite, borderRadius: BorderRadius.circular(5)),
-                    padding: const EdgeInsets.symmetric(horizontal: 38, vertical: 11),
+                    decoration: BoxDecoration(color: kColorWhite,
+                        borderRadius: BorderRadius.circular(5)),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 38, vertical: 11),
                     child: Row(
                       children: [
-                         const ChangeThisWidgetWithImage(),
+                        const ChangeThisWidgetWithImage(),
                         // Image.asset(
                         //   "images/icons/editBlack.png",
                         //   width: 16,
@@ -325,7 +361,8 @@ class TopWidget extends StatelessWidget {
                         ),
                         Text(
                           "Edit Profile",
-                          style: kFontNotoSansS13W600Button2.copyWith(color: kColorBlack),
+                          style: kFontNotoSansS13W600Button2.copyWith(
+                              color: kColorBlack),
                         ),
                       ],
                     ),
@@ -341,7 +378,8 @@ class TopWidget extends StatelessWidget {
 }
 
 class HeadingWidget extends StatelessWidget {
-  const HeadingWidget({Key? key, required this.heading, required this.icon}) : super(key: key);
+  const HeadingWidget({Key? key, required this.heading, required this.icon})
+      : super(key: key);
   final String heading;
   final String icon;
 
