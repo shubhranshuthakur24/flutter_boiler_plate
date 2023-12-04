@@ -35,17 +35,18 @@ class ProfileUpdateServices extends GetxController with MixinGetCgProfile{
   // bool isPreviousScreenIsHome = false;
 
   @override
-  onInit() {
+  onInit() async {
     super.onInit();
-    apiGetCgProfile();
+    await apiGetCgProfile();
 
 // Initialize cgFullNameEditingController here
-    cgFirstName = "";
-    cgLastName = "";
-    cgEmail = "";
-    cgContactDetails = "";
+    cgFirstName = userScreenModel.value?.cgFirstName ?? "" ;
+    cgLastName = userScreenModel.value?.cgLastName ?? "";
+    cgEmail = userScreenModel.value!.email;
     cgFullNameEditingController = TextEditingController(
-        text: "$cgFirstName $cgLastName");
+        text: "${cgFirstName ?? ""} ${cgLastName ?? ""}");
+    cgEmailEditingController = TextEditingController(text: cgEmail);
+
     // try {
     //   List dobList = userScreenModel.value!.cgDob.split("-");
     //   dob = dobList[dobList.length - 1] ?? "";
@@ -57,20 +58,13 @@ class ProfileUpdateServices extends GetxController with MixinGetCgProfile{
     showPrint(userScreenModel.value.toString());
 
     // dob = "04-06-2004";
-    if(userScreenModel.value != null){
-      cgFirstName = userScreenModel.value?.cgFirstName ?? "" ;
-      cgLastName = userScreenModel.value?.cgLastName ?? "";
-      cgEmail = userScreenModel.value!.email;
-    }else{
-      cgFirstName =  "" ;
-      cgLastName = "";
-      cgEmail = "";
-    }
+
+
+
 
     // cgZipcode = "452010";
     // cgZipcodeEditingController = TextEditingController(text: cgZipcode);
     // cgFullNameEditingController = TextEditingController(text: "$cgFirstName $cgLastName");
-    cgEmailEditingController = TextEditingController(text: cgEmail);
     // cgDobEditingController = TextEditingController(text: dob);
     // cgMantraController = TextEditingController(text: "userBioServicesController.userScreenModel.value!.myMantra");
     // cgContactDetails = "8943892332";
