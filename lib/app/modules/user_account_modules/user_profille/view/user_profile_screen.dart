@@ -20,11 +20,6 @@ class ProfileScreen extends GetView <ProfileScreenServices> {
 
   @override
   Widget build(BuildContext context) {
-    // Access the controller and userScreenModel.value
-
-
-    // Check if userScreenModel has data before building the UI
-    // if (controller.userScreenModel.value != null && controller.apiLoading.value == false) {
     return Obx(() {
         return Scaffold(
           backgroundColor: kColorSteelGray,
