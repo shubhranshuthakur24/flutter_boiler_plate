@@ -5,7 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import '../global_variables/global_variable.dart';
 import '../token_services/token_services.dart';
 
-class ProfileImageUploadFirebase extends GetxController {
+mixin ProfileImageUploadFirebase {
   final picker = ImagePicker();
 
   Future uploadImage({required String picName, required var file}) async {

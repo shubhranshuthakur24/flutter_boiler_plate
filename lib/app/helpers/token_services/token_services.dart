@@ -11,7 +11,6 @@ class TokenServices extends GetxController with GlobalVariable{
   late final String firebaseUserId;
   late String userFirstName;
   late String userLastName;
-  late RxString userProfilePictureUrl;
 
   @override
   void onInit() {

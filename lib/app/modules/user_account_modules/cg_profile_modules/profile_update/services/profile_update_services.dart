@@ -9,12 +9,14 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../../../helpers/api_related_services/api_get_post_services.dart';
 import '../../../../../helpers/api_related_services/apis_endpoint.dart';
+import '../../../../../helpers/global_function/profile_image_upload_firebase.dart';
 import '../../../../../helpers/token_services/token_services.dart';
 import '../../../../../styles/constants.dart';
 import '../../profile/models/profile_model.dart';
 import '../../profile/services/mixin_get_cg_profile.dart';
 
-class ProfileUpdateServices extends GetxController with MixinGetCgProfile{
+class ProfileUpdateServices extends GetxController with MixinGetCgProfile, ProfileImageUploadFirebase{
+
   bool hasAnythingChanged = false;
   // final MenuServices userBioServicesController = Get.find();
   // final ProfileImageUploadFirebase _profileImageUploadFirebase = Get.put(ProfileImageUploadFirebase());
@@ -46,7 +48,13 @@ class ProfileUpdateServices extends GetxController with MixinGetCgProfile{
     cgFullNameEditingController = TextEditingController(
         text: "${cgFirstName ?? ""} ${cgLastName ?? ""}");
     cgEmailEditingController = TextEditingController(text: cgEmail);
-
+    dob = "04-06-2003";
+    cgFullNameEditingController.addListener(() {
+      final fullName = cgFullNameEditingController.text;
+      final parts = fullName.split(' ');
+      cgFirstName = parts.isNotEmpty ? parts[0] : "";
+      cgLastName = parts.length > 1 ? parts[1] : "";
+    });
     // try {
     //   List dobList = userScreenModel.value!.cgDob.split("-");
     //   dob = dobList[dobList.length - 1] ?? "";
@@ -109,21 +117,17 @@ class ProfileUpdateServices extends GetxController with MixinGetCgProfile{
     //   return;
     // }
     if (GetPlatform.isWeb) {
-      // if (fileForWeb.path == "zz") {
-      //   apiUpdateUserDetailsWithImage(
-      //     zipcode: cgZipcodeEditingController.text,
-      //     dob: cgDobEditingController.text,
-      //     contactNumber: cgContactDetailsEditingController.text,
-      //   );
-      // } else {
-      //   // _profileImageUploadFirebase.uploadImage(picName: "cgProfilePic", file: webImage).then((value) {
-      //   //   apiUpdateUserDetailsWithImage(
-      //   //     zipcode: cgZipcodeEditingController.text,
-      //   //     dob: cgDobEditingController.text,
-      //   //     contactNumber: cgContactDetailsEditingController.text,
-      //   //   );
-      //   // });
-      // }
+      if (fileForWeb.path == "zz") {
+        hideLoading();
+
+        apiUpdateUserDetailsWithImage();
+      } else {
+        hideLoading();
+       uploadImage(picName: "cgProfilePic", file: webImage).then((value) {
+          apiUpdateUserDetailsWithImage();
+        }
+        );
+      }
     } else {
       if (image == null) {
         // apiUpdateUserDetailsWithImage(
@@ -132,6 +136,7 @@ class ProfileUpdateServices extends GetxController with MixinGetCgProfile{
         //   contactNumber: cgContactDetailsEditingController.text,
         // );
       } else {
+        // hideLoading();
         // _profileImageUploadFirebase.uploadImage(picName: "cgProfilePic", file: file).then((value) {
         //   apiUpdateUserDetailsWithImage(
         //     zipcode: cgZipcodeEditingController.text,
@@ -144,18 +149,17 @@ class ProfileUpdateServices extends GetxController with MixinGetCgProfile{
     }
   }
 
-  Future<String> apiUpdateUserDetailsWithImage(
-      {required String zipcode, required String dob, required String contactNumber}) async {
+  Future<String> apiUpdateUserDetailsWithImage() async {
     String res = "";
     showPrint("printMessage");
     // if (cgContactDetailsEditingController.text.trim() == "") showPrint("hello");
 
     // List<String> splitNameList = StringManipulation.nameSplit(fullname: cgFullNameEditingController.text.trim());
     Map<String, dynamic>? decoded = await ApiGetPostMethodUniversal.postMethod(apiUrl: ApiEndpoints.updateUserProfile, body: {
-      "profile_picurl": Get.find<TokenServices>().userProfilePictureUrl.value.trim(),
-      "firstname": "splitNameList[0].trim().toLowerCase()",
-      "lastname": "splitNameList[1].trim().toLowerCase()",
-      "zipcode": zipcode.trim(),
+      "profile_picurl": Get.find<TokenServices>().userProfileUrlUniversal.value.trim(),
+      "firstname": cgFirstName,
+      "lastname": cgLastName,
+      "zipcode": "",
       if (GetUtils.isNum(dob.trim())) "dob": dob.trim(),
       // if (GetUtils.isNum(cgContactDetailsEditingController.text.trim().replaceAll("-", "")) ||
       //     cgContactDetailsEditingController.text.trim().isEmpty)
