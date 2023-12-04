@@ -51,9 +51,16 @@ class ProfileUpdateServices extends GetxController with MixinGetCgProfile{
     showPrint(userScreenModel.value.toString());
 
     // dob = "04-06-2004";
-    cgFirstName = userScreenModel.value?.cgFirstName ?? "" ;
-    cgLastName = userScreenModel.value?.cgLastName ?? "";
-    cgEmail = userScreenModel.value!.email;
+    if(userScreenModel.value != null){
+      cgFirstName = userScreenModel.value?.cgFirstName ?? "" ;
+      cgLastName = userScreenModel.value?.cgLastName ?? "";
+      cgEmail = userScreenModel.value!.email;
+    }else{
+      cgFirstName =  "" ;
+      cgLastName = "";
+      cgEmail = "";
+    }
+
     // cgZipcode = "452010";
     // cgZipcodeEditingController = TextEditingController(text: cgZipcode);
     // cgFullNameEditingController = TextEditingController(text: "$cgFirstName $cgLastName");
