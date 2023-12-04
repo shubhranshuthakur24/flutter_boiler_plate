@@ -26,81 +26,74 @@ class ProfileScreen extends GetView <ProfileScreenServices> {
     // Check if userScreenModel has data before building the UI
     // if (controller.userScreenModel.value != null && controller.apiLoading.value == false) {
     return Obx(() {
-        if(controller.apiLoading.value){
-          return Scaffold(body: SideBarPanel(showSideMenu: true,
-              child: Container(child: showSpinkitRing(),)));
-        }else if (controller.userScreenModel.value != null) {
-          return Scaffold(
-            backgroundColor: kColorSteelGray,
-            body:SideBarPanel(
-              showSideMenu: true,
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: Column(
-                  children: [
-                    const kAppBarWidgetWithBackButton(
-                      title: "Profile",
-                    ),
-                    Expanded(
-                      child: SingleChildScrollView(
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 19),
-                          child: Column(
-                            children: [
-                              const SizedBox(
-                                height: 28,
-                              ),
-                              TopWidget(
-                                heading: "Profile",
-                                name: "",
-                                city: "",
-                                onTapEditProfileButton: () {
-                                  Get.toNamed(ScreenNames.editProfile.routeName);
-                                },
-                                profileUrl: "",
-                                dob: "04-06-2003",
-                              ),
-                              const SizedBox(
-                                height: 24,
-                              ),
-                              headingAndBodyWidget(
-                                disabledBool: true,
-                                heading: "Email",
-                                body: controller.userScreenModel.value!.email,
-                                icon: "emailblue.png",
-                              ),
-                              headingAndBodyWidget(
-                                disabledBool: false,
-                                heading: "First Name",
-                                body: controller.userScreenModel.value!.cgFirstName,
-                                icon: "zipCodeBlue.png",
-                              ),
-                              headingAndBodyWidget(
-                                disabledBool: false,
-                                heading: "Last Name",
-                                body: controller.userScreenModel.value!.cgLastName,
-                                icon: "yearOfBirthBlue.png",
-                              ),
-                              headingAndBodyWidget(
-                                disabledBool: false,
-                                heading: "Contact Number",
-                                body: "phone",
-                                icon: "contractNumberBlue.png",
-                              ),
-                            ],
-                          ),
+        return Scaffold(
+          backgroundColor: kColorSteelGray,
+          body:SideBarPanel(
+            showSideMenu: true,
+            child:controller.apiLoading.value ?showSpinkitRing():controller.userScreenModel.value != null?
+            Align(
+              alignment: Alignment.topLeft,
+              child: Column(
+                children: [
+                  const kAppBarWidgetWithBackButton(
+                    title: "Profile",
+                  ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 19),
+                        child: Column(
+                          children: [
+                            const SizedBox(
+                              height: 28,
+                            ),
+                            TopWidget(
+                              heading: "Profile",
+                              name: "",
+                              city: "",
+                              onTapEditProfileButton: () {
+                                Get.toNamed(ScreenNames.editProfile.routeName);
+                              },
+                              profileUrl: "",
+                              dob: "04-06-2003",
+                            ),
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            headingAndBodyWidget(
+                              disabledBool: true,
+                              heading: "Email",
+                              body: controller.userScreenModel.value!.email,
+                              icon: "emailblue.png",
+                            ),
+                            headingAndBodyWidget(
+                              disabledBool: false,
+                              heading: "First Name",
+                              body: controller.userScreenModel.value!.cgFirstName,
+                              icon: "zipCodeBlue.png",
+                            ),
+                            headingAndBodyWidget(
+                              disabledBool: false,
+                              heading: "Last Name",
+                              body: controller.userScreenModel.value!.cgLastName,
+                              icon: "yearOfBirthBlue.png",
+                            ),
+                            headingAndBodyWidget(
+                              disabledBool: false,
+                              heading: "Contact Number",
+                              body: "phone",
+                              icon: "contractNumberBlue.png",
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ),
-          );
-        }else {
-          return Scaffold(body: SideBarPanel(showSideMenu: true,
-              child: Container(child: showSpinkitRing(),)));
-        }
+            ):showSpinkitRing(),
+          ),
+        );
     });
   }
 
