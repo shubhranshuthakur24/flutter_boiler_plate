@@ -2,6 +2,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../global_variables/global_variable.dart';
 import '../token_services/token_services.dart';
 
 class ProfileImageUploadFirebase extends GetxController {

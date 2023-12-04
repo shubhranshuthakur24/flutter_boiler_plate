@@ -3,8 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 import '../../styles/constants.dart';
+import '../global_variables/global_variable.dart';
 
-class TokenServices extends GetxController {
+class TokenServices extends GetxController with GlobalVariable{
   String? idToken;
   late final String userid;
   late final String firebaseUserId;
