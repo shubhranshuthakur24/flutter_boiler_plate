@@ -12,7 +12,7 @@ abstract class ApiEndpoints{
   //
   static const String loginApiUrl = "auth/login_user/";
   static const String signUpApiUrl = "${baseUrl}auth/signup/";
-  static const String updateUserProfile = "${baseUrl}auth/post_verify_reset_otp/";
+  static const String updateUserProfile = "${baseUrl}auth/update_user_profile/";
   static const String getUserProfile = "${baseUrl}auth/get_user_profile/";
   static const String updateLogin = "https://3xiyi3pnn7.us-east-1.awsapprunner.com/v1/auth/update_login/";
   static const String feedbackResponse = "https://3xiyi3pnn7.us-east-1.awsapprunner.com/v1/auth/update_users_feedback/";

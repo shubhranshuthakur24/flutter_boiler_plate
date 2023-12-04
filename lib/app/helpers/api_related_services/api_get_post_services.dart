@@ -38,11 +38,15 @@ abstract class ApiGetPostMethodUniversal {
     Map<String, dynamic>? body,
     Map<String, dynamic>? requestData,
     bool tokenRequired = true,
+
   }) async {
     Map<String, dynamic>? apiData;
     try {
       var headers = {
         'Content-Type': 'application/json'};
+      if (tokenRequired != false) {
+        headers['Authorization'] = "Token ${Get.find<TokenServices>().idToken}" ;
+      }
 
     final response = await http.post(
         Uri.parse(apiUrl),

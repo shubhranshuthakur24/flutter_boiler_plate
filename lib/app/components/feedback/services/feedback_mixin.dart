@@ -1,7 +1,10 @@
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
 import '../../../helpers/api_related_services/api_get_post_services.dart';
 import '../../../helpers/api_related_services/apis_endpoint.dart';
+import '../../../helpers/token_services/token_services.dart';
 import '../../../styles/constants.dart';
 
 mixin MixinFeedbackResponse {
@@ -47,7 +50,6 @@ mixin MixinFeedbackResponse {
     try {
       apiFeedbackResponseLoading.value =true;
       Map<String, dynamic>? decoded = await ApiGetPostMethodUniversal.postMethod(
-          tokenRequired: false,
           apiUrl: ApiEndpoints.feedbackResponse,
           body:{
             "ip":ipAddress,
