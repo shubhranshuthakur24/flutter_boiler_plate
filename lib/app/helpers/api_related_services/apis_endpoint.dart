@@ -3,7 +3,9 @@ abstract class ApiEndpoints{
 
   static const String baseUrl = _isPort == true
       ? "" // Place your development server url  on localhost with port no here.
-      : "";// Place your production api url here.
+      // : "";// Place your production api url here.
+      : "https://3xiyi3pnn7.us-east-1.awsapprunner.com/v1/";// Place your production api url here.
+
 
 
 

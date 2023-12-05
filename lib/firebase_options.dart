@@ -47,28 +47,28 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBMsWmo2VYgNK-_yMqAVRMJnLdkmit1aBY',
-    appId: '1:67821362043:web:8794e7ed958a4acba8bbde',
-    messagingSenderId: '67821362043',
-    projectId: 'flutterboilerplatehub9',
-    authDomain: 'flutterboilerplatehub9.firebaseapp.com',
-    storageBucket: 'flutterboilerplatehub9.appspot.com',
+    apiKey: 'AIzaSyBMsWmo2VYgNK-_yMqAVRMJnLdkmit1aBY',// place your firebase apikey here
+    appId: '1:67821362043:web:8794e7ed958a4acba8bbde',// place your firebase app id here.
+    messagingSenderId: '67821362043',  // place your firebase messaging sender id here.
+    projectId: 'flutterboilerplatehub9', // place your firebase project id here.
+    authDomain: 'flutterboilerplatehub9.firebaseapp.com', // place your firebase authDomain here.
+    storageBucket: 'flutterboilerplatehub9.appspot.com', // place your firebase storage bucket id here.
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCggYRuCQuNyhKZJqAURpA0Ghe3jXfkjbk',
-    appId: '1:67821362043:android:3859272ffd4810bba8bbde',
-    messagingSenderId: '67821362043',
-    projectId: 'flutterboilerplatehub9',
-    storageBucket: 'flutterboilerplatehub9.appspot.com',
+    apiKey: 'AIzaSyCggYRuCQuNyhKZJqAURpA0Ghe3jXfkjbk', // place your firebase apikey here.
+    appId: '1:67821362043:android:3859272ffd4810bba8bbde',// place your firebase app id here.
+    messagingSenderId: '67821362043',  // place your firebase messaging sender id here.
+    projectId: 'flutterboilerplatehub9', // place your firebase project id here.
+    storageBucket: 'flutterboilerplatehub9.appspot.com', // place your firebase storage bucket id here.
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyD-PX2w8bdX-uW5zNbSHE06Gx4kGyJwShI',
-    appId: '1:67821362043:ios:fc31f19ffb17b424a8bbde',
-    messagingSenderId: '67821362043',
-    projectId: 'flutterboilerplatehub9',
-    storageBucket: 'flutterboilerplatehub9.appspot.com',
-    iosBundleId: 'com.example.flutterBoilerPlate',
+    apiKey: 'AIzaSyD-PX2w8bdX-uW5zNbSHE06Gx4kGyJwShI', // place your firebase apikey here.
+    appId: '1:67821362043:ios:fc31f19ffb17b424a8bbde', // place your firebase app id here.
+    messagingSenderId: '67821362043', // place your firebase messaging sender id here.
+    projectId: 'flutterboilerplatehub9', // place your firebase project id here.
+    storageBucket: 'flutterboilerplatehub9.appspot.com', // place your firebase storage bucket id here.
+    iosBundleId: 'com.example.flutterBoilerPlate', // place your firebase iosBundleId here.
   );
 }
