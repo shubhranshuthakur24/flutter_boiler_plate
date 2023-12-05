@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../../../../components/const_widgets/change_with_image_widget.dart';
 import '../../../../components/side_menu/views/widgets/side_bar_panel.dart';
+import '../../../../helpers/token_services/token_services.dart';
 import '../../../../routes/screen_names.dart';
 import '../../../../styles/colors.dart';
 import '../../../../styles/constantImageWidget.dart';
@@ -49,7 +50,7 @@ class ProfileScreen extends GetView <ProfileScreenServices> {
                               onTapEditProfileButton: () {
                                 Get.toNamed(ScreenNames.editProfile.routeName);
                               },
-                              profileUrl: "",
+                              profileUrl: Get.find<TokenServices>().userProfileUrlUniversal.value,
                               dob: "04-06-2003",
                             ),
                             const SizedBox(
