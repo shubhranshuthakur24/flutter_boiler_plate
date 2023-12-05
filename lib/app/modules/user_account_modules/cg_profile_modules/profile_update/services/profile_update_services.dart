@@ -123,7 +123,7 @@ class ProfileUpdateServices extends GetxController with MixinGetCgProfile, Profi
         apiUpdateUserDetailsWithImage();
       } else {
         hideLoading();
-       uploadImage(picName: "cgProfilePic", file: webImage).then((value) {
+       uploadImage(picName: "userProfilePic", file: webImage).then((value) {
           apiUpdateUserDetailsWithImage();
         }
         );
