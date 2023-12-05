@@ -2,13 +2,13 @@
 import 'package:flutter_boiler_plate/app/modules/user_account_modules/sign_in/services/sign_in_screen_services.dart';
 import 'package:flutter_boiler_plate/app/modules/user_account_modules/sign_in/views/signin_screen.dart';
 import 'package:flutter_boiler_plate/app/modules/user_account_modules/signup/services/signup_screen_services.dart';
-import 'package:flutter_boiler_plate/app/modules/user_account_modules/user_profille/services/user_profile_services.dart';
 import 'package:flutter_boiler_plate/app/routes/screen_names.dart';
 import 'package:get/get.dart';
 
 
 import '../modules/home_screen/services/home_screen_services.dart';
-import '../modules/user_account_modules/cg_profile_modules/profile_update/services/profile_update_services.dart';
+import '../modules/user_account_modules/profile_modules/profile/services/user_profile_services.dart';
+import '../modules/user_account_modules/profile_modules/profile_update/services/profile_update_services.dart';
 import 'middlewares/middleware_for_sign_in_screens.dart';
 import 'middlewares/middleware_for_sign_out_screens.dart';
 

@@ -40,7 +40,7 @@ class RequestResetPasswordServices {
     requestPasswordButtonPressed.value = true;
 
     Map<String, dynamic>? decoded = await ApiGetPostMethodUniversal.postMethod(
-        apiUrl: ApiEndpoints.requestResetPassword,
+        apiUrl: "",
         body: {
           "country_code": "12345",
           "username": emailController.text.toString().trim(),
