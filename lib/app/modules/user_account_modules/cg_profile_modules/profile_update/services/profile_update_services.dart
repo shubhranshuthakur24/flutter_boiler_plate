@@ -156,7 +156,7 @@ class ProfileUpdateServices extends GetxController with MixinGetCgProfile, Profi
 
     // List<String> splitNameList = StringManipulation.nameSplit(fullname: cgFullNameEditingController.text.trim());
     Map<String, dynamic>? decoded = await ApiGetPostMethodUniversal.postMethod(apiUrl: ApiEndpoints.updateUserProfile, body: {
-      "profile_picurl": Get.find<TokenServices>().userProfileUrlUniversal.value.trim(),
+      "profile_picurl":  Get.find<TokenServices>().userProfileUrlUniversal.value.trim(),
       "first_name": cgFirstName,
       "last_name": cgLastName,
       // if (GetUtils.isNum(dob.trim())) "dob": dob.trim(),

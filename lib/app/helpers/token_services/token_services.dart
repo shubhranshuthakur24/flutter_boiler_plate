@@ -7,17 +7,18 @@ import '../global_variables/global_variable.dart';
 
 class TokenServices extends GetxController with GlobalVariable{
   String? idToken;
-  late final String userid;
   late final String firebaseUserId;
-  late String userFirstName;
-  late String userLastName;
+
 
   @override
   void onInit() {
     super.onInit();
     // changeFontSizeAccordingToDevice();
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
-      if (user != null) showPrint("uniqueId: ${user.uid.toString()}");
+      if (user != null) {
+        userId = user.uid;
+        showPrint("uniqueId: ${user.uid.toString()}");
+      }
     });
     FirebaseAuth.instance.idTokenChanges().listen((User? user) async {
       if (user != null) {

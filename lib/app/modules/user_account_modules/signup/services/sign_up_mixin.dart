@@ -105,7 +105,6 @@ mixin SignUpApiMixin {
         showToast(center: true, "Account created successfully !!", showToastInReleaseMode: true);
         if (decoded["data"] != null ) {
           showPrint(decoded["data"]["userid"].toString());
-          Get.find<TokenServices>().userid = decoded["data"]["userid"].toString();
           Get.find<TokenServices>().userFirstName = firstNameController.text.trim();
           Get.find<TokenServices>().userLastName = lastNameController.text.trim();
           Get.toNamed(ScreenNames.home.routeName);
