@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_boiler_plate/app/styles/constants.dart';
 import 'package:get/get.dart';
 
-import '../../../../components/const_widgets/change_with_image_widget.dart';
-import '../../../../components/side_menu/views/widgets/side_bar_panel.dart';
-import '../../../../routes/screen_names.dart';
-import '../../../../styles/colors.dart';
-import '../../../../styles/constantImageWidget.dart';
-import '../../../../styles/font_styles.dart';
-import '../../../../styles/k_icons.dart';
-import '../../../../utils/device_related/device_identify.dart';
-import '../../../../utils/internationalization_using_getx/tr_keys.dart';
+
+import '../../../../../components/const_widgets/change_with_image_widget.dart';
+import '../../../../../components/side_menu/views/widgets/side_bar_panel.dart';
+import '../../../../../routes/screen_names.dart';
+import '../../../../../styles/colors.dart';
+import '../../../../../styles/constantImageWidget.dart';
+import '../../../../../styles/font_styles.dart';
+import '../../../../../styles/k_icons.dart';
+import '../../../../../utils/device_related/device_identify.dart';
 import '../services/user_profile_services.dart';
 
 class ProfileScreen extends GetView <ProfileScreenServices> {
@@ -321,7 +321,7 @@ class TopWidget extends StatelessWidget {
                       Container(
                         margin: const EdgeInsets.only(top: 3),
                         child: Text(
-                          "${TrKeys.location.name.tr}: $city",
+                          "Location : $city",
                           style: kFontNotoSansS18W400Para1.copyWith(
                               color: kColorWhite,
                               fontWeight: FontWeight.w400,

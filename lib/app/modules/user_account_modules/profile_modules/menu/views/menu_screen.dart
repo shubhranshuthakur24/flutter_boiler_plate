@@ -9,7 +9,7 @@ import '../../../../../styles/constants.dart';
 import '../../../../../styles/font_styles.dart';
 import '../../../../../styles/k_icons.dart';
 import '../../../../../utils/device_related/device_identify.dart';
-import '../../../user_profille/view/user_profile_screen.dart';
+import '../../profile/views/user_profile_screen.dart';
 
 class MenuScreen extends GetView<MenuServices> {
   const MenuScreen({Key? key}) : super(key: key);
