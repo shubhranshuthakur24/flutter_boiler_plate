@@ -16,19 +16,14 @@ mixin ProfileImageUploadFirebase {
     //
 
     //
-    showPrint("printMessage from line 20");
 
     if (GetPlatform.isAndroid || GetPlatform.isWeb || GetPlatform.isIOS) {
-      showPrint("printMessage from line 23");
       try {
         final firebaseStorage = FirebaseStorage.instance;
-        showPrint("printMessage from line 26");
         if (true) {
-          showPrint("printMessage from line 28");
 
           TaskSnapshot snapshot;
           if (GetPlatform.isWeb) {
-            showPrint("printMessage from line 32");
 
             snapshot = await firebaseStorage
                 .ref()
@@ -41,14 +36,11 @@ mixin ProfileImageUploadFirebase {
                 .putFile(file);
           }
           var downloadUrl = await snapshot.ref.getDownloadURL();
-          showPrint("printMessage from line 46");
           showPrint(downloadUrl.toString());
           showPrint(picName.toString());
 
 
           if (picName == "userProfilePic") {
-            showPrint(" line 75");
-
             Get.find<TokenServices>().userProfileUrlUniversal.value = downloadUrl;
           }
         }
@@ -56,7 +48,6 @@ mixin ProfileImageUploadFirebase {
         // SentryFunction.captureErrorFromTryCatchBlock(error: error, stackTrace: stackTrace);
       }
     }else{
-      showPrint("printMessage line from 49");
       try {
         final firebaseStorage = FirebaseStorage.instance;
 

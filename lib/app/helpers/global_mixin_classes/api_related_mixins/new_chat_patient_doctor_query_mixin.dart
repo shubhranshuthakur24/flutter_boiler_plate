@@ -25,10 +25,8 @@ mixin ChatApiPatientDoctorsQueryMixin {
           "prompt": patientQueryTextEditingController.text.trim(),
         },
       );
-      showPrint(" line 39 patient doctor");
       showPrint(decoded.toString());
       isApiLoading.value = false;
-      showPrint(" line 41 patient doctor");
       if (decoded != null && decoded.containsKey("response")) {
         responseFromPatientDoctorsQueryApi.value = decoded["response"];
 

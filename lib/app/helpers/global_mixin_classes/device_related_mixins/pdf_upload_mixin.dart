@@ -57,16 +57,12 @@ mixin GetPDFMixin {
 
         if (response.statusCode == 200) {
           showPrint(response.data!['response'].toString());
-          showToast(response.data!['response'].toString());
-          showPrint("line 60");
         } else {
           // Handle unexpected status codes
-          showPrint("Unexpected status code: ${response.statusCode}");
           showToast("Unexpected status code: ${response.statusCode}", showToastInReleaseMode: true);
 
           // Check if there is additional information in the response body
           if (response.data != null) {
-            showPrint("Response data: ${response.data}");
             showToast("Response data: ${response.data}", showToastInReleaseMode: true);
           }
         }
