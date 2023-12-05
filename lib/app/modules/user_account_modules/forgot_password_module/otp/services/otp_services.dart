@@ -39,7 +39,7 @@ class OtpScreenServices extends GetxController {
     continueButtonPressed.value = true;
     try {
       Map<String, dynamic>? decoded = await ApiGetPostMethodUniversal.postMethod(
-          apiUrl: ApiEndpoints.otpCheckUrl,
+          apiUrl: "",
           body: {
             "email": email.trim(),
             "otp": otp.trim(),

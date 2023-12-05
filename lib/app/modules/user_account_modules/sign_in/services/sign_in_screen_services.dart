@@ -1,4 +1,3 @@
-import 'package:flutter_boiler_plate/app/styles/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -71,7 +70,7 @@ class SignInScreenServices extends GetxController with FirebaseAuthSignInWithEma
 }
 
 Future<Map<String, dynamic>?> loginApiHit() async {
-  Map<String, dynamic>? decoded = await ApiGetPostMethodUniversal.postMethod(apiUrl: ApiEndpoints.loginApiUrl, body: {
+  Map<String, dynamic>? decoded = await ApiGetPostMethodUniversal.postMethod(apiUrl: "", body: {
     "device_info": await DeviceInfoServices.getDeviceInfo(),
     "device_channelid": DeviceInfoServices.getDeviceChannelId(),
     // if (!GetPlatform.isWeb) "device_token": await FirebaseMessaging.instance.getToken()

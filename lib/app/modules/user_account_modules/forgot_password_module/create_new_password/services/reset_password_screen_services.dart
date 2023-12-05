@@ -58,7 +58,7 @@ class ResetPasswordScreenServices {
     requestPasswordButtonPressed.value = true;
 
     Map<String, dynamic>? decoded = await ApiGetPostMethodUniversal.postMethod(
-        apiUrl: ApiEndpoints.resetPassword,
+        apiUrl: "",
         body: {"key": enteredOtp, "password": passwordController.text.trim(), "username": enteredEmail},
         tokenRequired: false);
 

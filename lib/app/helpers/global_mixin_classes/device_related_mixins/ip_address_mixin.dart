@@ -25,7 +25,7 @@ mixin IpAddressMixin {
     try {
       Map<String, dynamic>? decoded = await ApiGetPostMethodUniversal.postMethod(
           tokenRequired: false,
-          apiUrl: ApiEndpoints.updateLogin,
+          apiUrl: "",
           body:{
             "ip":userIpAddress,
           }
