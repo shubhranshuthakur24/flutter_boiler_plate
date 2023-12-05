@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 
 import '../modules/home_screen/views/home_screen.dart';
-import '../modules/user_account_modules/cg_profile_modules/profile_update/views/profile_update_screen.dart';
+import '../modules/user_account_modules/profile_modules/profile_update/views/profile_update_screen.dart';
 import '../modules/user_account_modules/user_profille/view/user_profile_screen.dart';
 
 
