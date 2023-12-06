@@ -44,13 +44,13 @@ class ProfileScreen extends GetView <ProfileScreenServices> {
                             ),
                             TopWidget(
                               heading: "Profile",
-                              name: "",
-                              city: "",
+                              name: "${controller.userScreenModel.value!.cgFirstName}  ${controller.userScreenModel.value!.cgLastName}",
+                              city: controller.userScreenModel.value!.city,
                               onTapEditProfileButton: () {
                                 Get.toNamed(ScreenNames.editProfile.routeName);
                               },
                               profileUrl: "",
-                              dob: "04-06-2003",
+                              dob: controller.userScreenModel.value!.age,
                             ),
                             const SizedBox(
                               height: 24,
@@ -308,7 +308,7 @@ class TopWidget extends StatelessWidget {
                       Container(
                         margin: const EdgeInsets.only(top: 3),
                         child: Text(
-                          "Age : ",
+                          "Age : $dob",
                           style: kFontNotoSansS18W400Para1.copyWith(
                               color: kColorWhite,
                               fontWeight: FontWeight.w400,
