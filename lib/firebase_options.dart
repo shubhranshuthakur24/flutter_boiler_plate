@@ -47,28 +47,28 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: '',
-    appId: '',
-    messagingSenderId: '',
-    projectId: '',
-    authDomain: '',
-    storageBucket: '',
+    apiKey: '',// place your firebase apikey here
+    appId: '',// place your firebase app id here.
+    messagingSenderId: '',  // place your firebase messaging sender id here.
+    projectId: '', // place your firebase project id here.
+    authDomain: '', // place your firebase authDomain here.
+    storageBucket: '', // place your firebase storage bucket id here.
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: '',
-    appId: '',
-    messagingSenderId: '',
-    projectId: '',
-    storageBucket: '',
+    apiKey: '', // place your firebase apikey here.
+    appId: '',// place your firebase app id here.
+    messagingSenderId: '',  // place your firebase messaging sender id here.
+    projectId: '', // place your firebase project id here.
+    storageBucket: '', // place your firebase storage bucket id here.
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: '',
-    appId: '',
-    messagingSenderId: '',
-    projectId: '',
-    storageBucket: '',
-    iosBundleId: '',
+    apiKey: '', // place your firebase apikey here.
+    appId: '', // place your firebase app id here.
+    messagingSenderId: '', // place your firebase messaging sender id here.
+    projectId: '', // place your firebase project id here.
+    storageBucket: '', // place your firebase storage bucket id here.
+    iosBundleId: '', // place your firebase iosBundleId here.
   );
 }

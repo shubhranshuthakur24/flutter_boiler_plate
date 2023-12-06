@@ -7,6 +7,7 @@ abstract class ApiEndpoints{
 
 
 
+
   //
   // static const String loginApiUrl = "auth/login_user/";
   static const String signUpApiUrl = "${baseUrl}auth/signup/";
