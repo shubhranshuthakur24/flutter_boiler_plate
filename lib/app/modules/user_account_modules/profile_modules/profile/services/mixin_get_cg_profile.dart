@@ -1,4 +1,5 @@
 
+import 'package:flutter_boiler_plate/app/helpers/token_services/token_services.dart';
 import 'package:get/get.dart';
 import '../../../../../helpers/api_related_services/api_get_post_services.dart';
 import '../../../../../helpers/api_related_services/apis_endpoint.dart';
@@ -25,6 +26,7 @@ mixin MixinGetCgProfile {
 
       if (decoded.containsKey('status') && decoded['status'] == 'success') {
         userScreenModel.value = ProfileModel.fromJson(decoded);
+        Get.find<TokenServices>().userProfileUrlUniversal.value = userScreenModel.value!.cgProfilePic;
         return userScreenModel;
       }
 
