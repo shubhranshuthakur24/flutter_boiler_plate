@@ -12,7 +12,7 @@ import 'app/routes/url_startgery_for_hash_symbol_remove_from_ulrs/configure_web.
 import 'app/styles/constants.dart';
 import 'app/utils/device_related/device_identify.dart';
 import 'firebase_options.dart';
-// import 'firebase_options.dart'; // configure firebase with cli  and uncomment this
+import 'firebase_options.dart'; // configure firebase with cli  and uncomment this
 
 
 RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
