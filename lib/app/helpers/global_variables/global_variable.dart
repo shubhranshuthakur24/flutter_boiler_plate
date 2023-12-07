@@ -5,5 +5,5 @@ mixin GlobalVariable {
   late String userFirstName;
   late String userLastName;
   late String deviceTokenForNotification;
-  RxString userProfileUrlUniversal = "".obs;
+  late RxString userProfileUrlUniversal = "".obs;
 }

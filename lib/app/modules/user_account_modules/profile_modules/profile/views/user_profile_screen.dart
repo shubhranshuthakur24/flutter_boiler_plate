@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 
 import '../../../../../components/const_widgets/change_with_image_widget.dart';
 import '../../../../../components/side_menu/views/widgets/side_bar_panel.dart';
+import '../../../../../helpers/token_services/token_services.dart';
 import '../../../../../routes/screen_names.dart';
 import '../../../../../styles/colors.dart';
 import '../../../../../styles/constantImageWidget.dart';
@@ -44,13 +45,13 @@ class ProfileScreen extends GetView <ProfileScreenServices> {
                             ),
                             TopWidget(
                               heading: "Profile",
-                              name: "",
-                              city: "",
+                              name: "${controller.userScreenModel.value!.cgFirstName}  ${controller.userScreenModel.value!.cgLastName}",
+                              city: controller.userScreenModel.value!.city,
                               onTapEditProfileButton: () {
                                 Get.toNamed(ScreenNames.editProfile.routeName);
                               },
-                              profileUrl: "",
-                              dob: "04-06-2003",
+                              profileUrl:controller.apiLoading.value ?"https://firebasestorage.googleapis.com/v0/b/flutterboilerplatehub9.appspot.com/o/media%2Fn0ZqYFh0pTVoJznLc199oj6Se9n1%2Fimages%2FuserProfilePic?alt=media&token=cd7c0571-aaa4-4338-b28e-5f9acb5360ab": Get.find<TokenServices>().userProfileUrlUniversal.value.toString(),
+                              dob: controller.userScreenModel.value!.age,
                             ),
                             const SizedBox(
                               height: 24,
@@ -273,6 +274,9 @@ class TopWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    showPrint("top widget line 277");
+    showPrint(profileUrl.toString());
+    showPrint("top widget line 279");
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -308,7 +312,7 @@ class TopWidget extends StatelessWidget {
                       Container(
                         margin: const EdgeInsets.only(top: 3),
                         child: Text(
-                          "Age : ",
+                          "Age : $dob",
                           style: kFontNotoSansS18W400Para1.copyWith(
                               color: kColorWhite,
                               fontWeight: FontWeight.w400,
